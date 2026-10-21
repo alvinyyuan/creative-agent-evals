@@ -1,0 +1,120 @@
+{
+  "task": {
+    "id": "A04",
+    "category": "ambiguous",
+    "idea": "Portrait of a knight.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": "Photorealistic, like a film still.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "knight"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Portrait of a knight.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the knight portrait be photographic (realistic, like a photo) or illustrated (painted, digital art, or another illustration style)?"
+        },
+        "result": "Photorealistic, like a film still.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Cinematic photorealistic portrait of a medieval knight in weathered steel plate armor, helmet removed and held under one arm, face visible with a short graying beard, scar across the left cheek, determined calm expression, gazing off into the distance. Shallow depth of field, soft rim lighting from a low golden sunset behind, subtle dust and haze in the air, dented armor with worn engravings and a faded crimson cloth over one shoulder. Medium close-up, shot on a 50mm lens, film grain, muted teal and amber color grading, like a still from a historical epic film.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_b0a32ae2-132e-4bea-a23d-bac24833b860\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:17.387Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_b0a32ae2-132e-4bea-a23d-bac24833b860"
+        },
+        "result": "{\"job_id\":\"job_b0a32ae2-132e-4bea-a23d-bac24833b860\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:17.387Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/128985/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_b0a32ae2-132e-4bea-a23d-bac24833b860",
+          "model": "piclumen-v1",
+          "prompt": "Cinematic photorealistic portrait of a medieval knight in weathered steel plate armor, helmet removed and held under one arm, face visible with a short graying beard, scar across the left cheek, determined calm expression, gazing off into the distance. Shallow depth of field, soft rim lighting from a low golden sunset behind, subtle dust and haze in the air, dented armor with worn engravings and a faded crimson cloth over one shoulder. Medium close-up, shot on a 50mm lens, film grain, muted teal and amber color grading, like a still from a historical epic film.",
+          "note": "Photorealistic draft in 3:4 portrait format, styled as a film still. Approve to generate the final (default 4 images), or tell me what to change."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Cinematic photorealistic portrait of a medieval knight in weathered steel plate armor, helmet removed and held under one arm, face visible with a short graying beard, scar across the left cheek, determined calm expression, gazing off into the distance. Shallow depth of field, soft rim lighting from a low golden sunset behind, subtle dust and haze in the air, dented armor with worn engravings and a faded crimson cloth over one shoulder. Medium close-up, shot on a 50mm lens, film grain, muted teal and amber color grading, like a still from a historical epic film.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_a85e4682-631c-414d-ba8c-f106d5270d7d\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:25.826Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_a85e4682-631c-414d-ba8c-f106d5270d7d"
+        },
+        "result": "{\"job_id\":\"job_a85e4682-631c-414d-ba8c-f106d5270d7d\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:25.826Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/624442/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/624443/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/624444/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/624445/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 photorealistic film-still portraits of a knight (3:4, piclumen-v1), using the approved prompt.\n\nAsset URLs:\n- https://picsum.photos/seed/624442/768/1024\n- https://picsum.photos/seed/624443/768/1024\n- https://picsum.photos/seed/624444/768/1024\n- https://picsum.photos/seed/624445/768/1024",
+    "cost_usd": 0.00199134,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3151,
+      "cache_read_input_tokens": 51654,
+      "output_tokens": 1686
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the knight portrait be photographic (realistic, like a photo) or illustrated (painted, digital art, or another illustration style)?",
+      "reply": "Photorealistic, like a film still."
+    },
+    {
+      "event": "review",
+      "job_id": "job_b0a32ae2-132e-4bea-a23d-bac24833b860",
+      "model": "piclumen-v1",
+      "prompt": "Cinematic photorealistic portrait of a medieval knight in weathered steel plate armor, helmet removed and held under one arm, face visible with a short graying beard, scar across the left cheek, determined calm expression, gazing off into the distance. Shallow depth of field, soft rim lighting from a low golden sunset behind, subtle dust and haze in the air, dented armor with worn engravings and a faded crimson cloth over one shoulder. Medium close-up, shot on a 50mm lens, film grain, muted teal and amber color grading, like a still from a historical epic film.",
+      "note": "Photorealistic draft in 3:4 portrait format, styled as a film still. Approve to generate the final (default 4 images), or tell me what to change.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 21.9
+}

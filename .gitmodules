@@ -1,0 +1,3 @@
+[submodule "mcp"]
+	path = mcp
+	url = https://github.com/alvinyyuan/piclumen-mcp-server-reference.git

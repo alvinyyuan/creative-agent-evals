@@ -1,0 +1,111 @@
+{
+  "task": {
+    "id": "I05",
+    "category": "illustration",
+    "idea": "Anime key visual of two friends on bikes on a country road in summer.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "bike|bicycle",
+      "summer"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Anime key visual of two friends on bikes on a country road in summer.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image",
+          "response_format": "json"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime key visual of two teenage friends riding bicycles side by side down a winding country road in summer. One rides a red bike and the other a teal bike, both laughing and looking toward each other mid-conversation, with backpacks and loose shirts fluttering in the breeze. The road is narrow asphalt lined with tall green grass and wildflowers, rolling hills and a few scattered trees in the background, and a bright blue sky with large white cumulus clouds. Warm golden-hour sunlight casts long soft shadows and lens flare, with vibrant saturated colors, crisp clean linework, cel shading, and painterly background detail in the style of a polished modern anime film poster. Cinematic wide composition with the riders slightly off-center and dynamic depth.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_e3d9ea52-3d5c-4a26-98bd-6c0f4acafc0b\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:07.407Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_e3d9ea52-3d5c-4a26-98bd-6c0f4acafc0b",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_e3d9ea52-3d5c-4a26-98bd-6c0f4acafc0b\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:07.407Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/702695/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_e3d9ea52-3d5c-4a26-98bd-6c0f4acafc0b",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime key visual of two teenage friends riding bicycles side by side down a winding country road in summer. One rides a red bike and the other a teal bike, both laughing and looking toward each other mid-conversation, with backpacks and loose shirts fluttering in the breeze. The road is narrow asphalt lined with tall green grass and wildflowers, rolling hills and a few scattered trees in the background, and a bright blue sky with large white cumulus clouds. Warm golden-hour sunlight casts long soft shadows and lens flare, with vibrant saturated colors, crisp clean linework, cel shading, and painterly background detail in the style of a polished modern anime film poster. Cinematic wide composition with the riders slightly off-center and dynamic depth.",
+          "note": "Draft at 16:9 in the PicLumen Anime V1 model, the wide format suited to a key visual. It shows two friends on red and teal bikes on a summer country road in golden-hour light. Tell me if you want changes, or approve it and I'll generate the final."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime key visual of two teenage friends riding bicycles side by side down a winding country road in summer. One rides a red bike and the other a teal bike, both laughing and looking toward each other mid-conversation, with backpacks and loose shirts fluttering in the breeze. The road is narrow asphalt lined with tall green grass and wildflowers, rolling hills and a few scattered trees in the background, and a bright blue sky with large white cumulus clouds. Warm golden-hour sunlight casts long soft shadows and lens flare, with vibrant saturated colors, crisp clean linework, cel shading, and painterly background detail in the style of a polished modern anime film poster. Cinematic wide composition with the riders slightly off-center and dynamic depth.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "16:9",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_13c507b8-b1ab-4f0c-a3e0-090a05d059d7\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:14.990Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_13c507b8-b1ab-4f0c-a3e0-090a05d059d7",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_13c507b8-b1ab-4f0c-a3e0-090a05d059d7\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:14.990Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/209254/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/209255/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/209256/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/209257/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Final generated: 4 anime key visuals at 16:9 using the PicLumen Anime V1 model, from the approved prompt.\nJob ID: job_13c507b8-b1ab-4f0c-a3e0-090a05d059d7\n\n- https://picsum.photos/seed/209254/1024/576\n- https://picsum.photos/seed/209255/1024/576\n- https://picsum.photos/seed/209256/1024/576\n- https://picsum.photos/seed/209257/1024/576",
+    "cost_usd": 0.00208055,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3331,
+      "cache_read_input_tokens": 46645,
+      "output_tokens": 1893
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_e3d9ea52-3d5c-4a26-98bd-6c0f4acafc0b",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime key visual of two teenage friends riding bicycles side by side down a winding country road in summer. One rides a red bike and the other a teal bike, both laughing and looking toward each other mid-conversation, with backpacks and loose shirts fluttering in the breeze. The road is narrow asphalt lined with tall green grass and wildflowers, rolling hills and a few scattered trees in the background, and a bright blue sky with large white cumulus clouds. Warm golden-hour sunlight casts long soft shadows and lens flare, with vibrant saturated colors, crisp clean linework, cel shading, and painterly background detail in the style of a polished modern anime film poster. Cinematic wide composition with the riders slightly off-center and dynamic depth.",
+      "note": "Draft at 16:9 in the PicLumen Anime V1 model, the wide format suited to a key visual. It shows two friends on red and teal bikes on a summer country road in golden-hour light. Tell me if you want changes, or approve it and I'll generate the final.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.3
+}

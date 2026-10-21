@@ -1,0 +1,152 @@
+{
+  "task": {
+    "id": "R01",
+    "category": "revision",
+    "idea": "A realistic photo of a vintage bicycle leaning on a brick wall.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Make the bicycle yellow and add flowers in its basket.",
+        "approve": false
+      },
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "bicycle",
+      "yellow",
+      "flower"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A realistic photo of a vintage bicycle leaning on a brick wall.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a vintage bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame with faded cream paint, chrome handlebars, leather saddle with cracks, wicker basket, and whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+          "model": "piclumen-v1",
+          "count": 1,
+          "aspect_ratio": "4:3"
+        },
+        "result": "{\"job_id\":\"job_9a72de59-4e54-45df-985f-aa4ec007d071\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:32.104Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_9a72de59-4e54-45df-985f-aa4ec007d071"
+        },
+        "result": "{\"job_id\":\"job_9a72de59-4e54-45df-985f-aa4ec007d071\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:32.104Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/40021/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_9a72de59-4e54-45df-985f-aa4ec007d071",
+          "model": "piclumen-v1",
+          "prompt": "A realistic photograph of a vintage bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame with faded cream paint, chrome handlebars, leather saddle with cracks, wicker basket, and whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+          "note": "Draft 1 of a photorealistic image (4:3, one image). I added details you didn't specify: a cream steel frame, chrome handlebars, a wicker basket, whitewall tyres, and some fallen leaves. Tell me if you want any of these changed, or approve to generate the final."
+        },
+        "result": "Make the bicycle yellow and add flowers in its basket.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a vintage yellow bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame painted a warm faded yellow, chrome handlebars, leather saddle with cracks, and a wicker basket filled with fresh flowers. Whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+          "model": "piclumen-v1",
+          "count": 1,
+          "aspect_ratio": "4:3"
+        },
+        "result": "{\"job_id\":\"job_fbd2e03a-58bb-4813-aca3-3c331c569bd1\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:41.828Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_fbd2e03a-58bb-4813-aca3-3c331c569bd1"
+        },
+        "result": "{\"job_id\":\"job_fbd2e03a-58bb-4813-aca3-3c331c569bd1\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:41.828Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/874436/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_fbd2e03a-58bb-4813-aca3-3c331c569bd1",
+          "model": "piclumen-v1",
+          "prompt": "A realistic photograph of a vintage yellow bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame painted a warm faded yellow, chrome handlebars, leather saddle with cracks, and a wicker basket filled with fresh flowers. Whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+          "note": "Revised draft (4:3, one image): the bicycle is now yellow and the wicker basket holds fresh flowers. Everything else is unchanged. Approve to generate the final, or ask for more changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a vintage yellow bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame painted a warm faded yellow, chrome handlebars, leather saddle with cracks, and a wicker basket filled with fresh flowers. Whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+          "model": "piclumen-v1",
+          "count": 4,
+          "aspect_ratio": "4:3"
+        },
+        "result": "{\"job_id\":\"job_1391e150-44d5-496d-a574-55cdf47cb6a3\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:48.182Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_1391e150-44d5-496d-a574-55cdf47cb6a3"
+        },
+        "result": "{\"job_id\":\"job_1391e150-44d5-496d-a574-55cdf47cb6a3\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:48.182Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/790620/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/790621/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/790622/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/790623/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Four final photorealistic images of a yellow vintage bicycle with a flower-filled basket, leaning on a red brick wall (4:3, using the approved prompt).\nJob ID: job_1391e150-44d5-496d-a574-55cdf47cb6a3, 16 credits charged.\n\n- https://picsum.photos/seed/790620/1024/768\n- https://picsum.photos/seed/790621/1024/768\n- https://picsum.photos/seed/790622/1024/768\n- https://picsum.photos/seed/790623/1024/768",
+    "cost_usd": 0.0027980199999999996,
+    "num_turns": 10,
+    "usage": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 4223,
+      "cache_read_input_tokens": 71092,
+      "output_tokens": 2481
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_9a72de59-4e54-45df-985f-aa4ec007d071",
+      "model": "piclumen-v1",
+      "prompt": "A realistic photograph of a vintage bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame with faded cream paint, chrome handlebars, leather saddle with cracks, wicker basket, and whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+      "note": "Draft 1 of a photorealistic image (4:3, one image). I added details you didn't specify: a cream steel frame, chrome handlebars, a wicker basket, whitewall tyres, and some fallen leaves. Tell me if you want any of these changed, or approve to generate the final.",
+      "reply": "Make the bicycle yellow and add flowers in its basket.",
+      "approve": false
+    },
+    {
+      "event": "review",
+      "job_id": "job_fbd2e03a-58bb-4813-aca3-3c331c569bd1",
+      "model": "piclumen-v1",
+      "prompt": "A realistic photograph of a vintage yellow bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame painted a warm faded yellow, chrome handlebars, leather saddle with cracks, and a wicker basket filled with fresh flowers. Whitewall tires with some dust. Natural daylight from the side, soft shadows on the bricks, slightly worn mortar lines, a few fallen leaves on the ground. Shallow depth of field, 35mm lens look, eye-level composition, true-to-life colours.",
+      "note": "Revised draft (4:3, one image): the bicycle is now yellow and the wicker basket holds fresh flowers. Everything else is unchanged. Approve to generate the final, or ask for more changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 27.8
+}

@@ -1,0 +1,112 @@
+{
+  "task": {
+    "id": "V01",
+    "category": "video",
+    "idea": "A short video of waves rolling onto a beach at sunset.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "wave",
+      "sunset"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A short video of waves rolling onto a beach at sunset.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "response_format": "json"
+        },
+        "result": "{\"total\":3,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"},{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic keyframe of ocean waves rolling onto a sandy beach at sunset. Long, gentle foamy waves curl and break across the shoreline, thin sheets of water sliding up the wet sand. Warm golden and orange sunset light low on the horizon, reflecting in the water and glowing through the wave crests. Soft pink and purple clouds across the sky. Wide establishing shot from the beach at water level, shallow depth of field, cinematic color grading, natural detail in spray and sea foam.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_db2f2abf-86c8-4ecd-93d5-dd6fadc65729\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:26.681Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_db2f2abf-86c8-4ecd-93d5-dd6fadc65729",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_db2f2abf-86c8-4ecd-93d5-dd6fadc65729\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:26.681Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/760360/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_db2f2abf-86c8-4ecd-93d5-dd6fadc65729",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic keyframe of ocean waves rolling onto a sandy beach at sunset. Long, gentle foamy waves curl and break across the shoreline, thin sheets of water sliding up the wet sand. Warm golden and orange sunset light low on the horizon, reflecting in the water and glowing through the wave crests. Soft pink and purple clouds across the sky. Wide establishing shot from the beach at water level, shallow depth of field, cinematic color grading, natural detail in spray and sea foam.",
+          "note": "This is a still keyframe for the video idea, drawn with the photorealistic image model in 16:9. Once you approve it, I'll generate the final video from the same prompt as a 5-second 16:9 clip with the PicLumen Video V1 model. If you want a different look or length, tell me and I'll redraft."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "Photorealistic keyframe of ocean waves rolling onto a sandy beach at sunset. Long, gentle foamy waves curl and break across the shoreline, thin sheets of water sliding up the wet sand. Warm golden and orange sunset light low on the horizon, reflecting in the water and glowing through the wave crests. Soft pink and purple clouds across the sky. Wide establishing shot from the beach at water level, shallow depth of field, cinematic color grading, natural detail in spray and sea foam.",
+          "model": "piclumen-video-v1",
+          "duration_seconds": 5,
+          "aspect_ratio": "16:9",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_47bce329-f5da-4b7e-9265-8099196dac04\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:52:33.934Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_47bce329-f5da-4b7e-9265-8099196dac04",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_47bce329-f5da-4b7e-9265-8099196dac04\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:52:33.934Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 5-second, 16:9 video of waves rolling onto a sunset beach is finished, generated from the approved prompt with PicLumen Video V1.\nVideo URL: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.0020291700000000003,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3244,
+      "cache_read_input_tokens": 46947,
+      "output_tokens": 1819
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_db2f2abf-86c8-4ecd-93d5-dd6fadc65729",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic keyframe of ocean waves rolling onto a sandy beach at sunset. Long, gentle foamy waves curl and break across the shoreline, thin sheets of water sliding up the wet sand. Warm golden and orange sunset light low on the horizon, reflecting in the water and glowing through the wave crests. Soft pink and purple clouds across the sky. Wide establishing shot from the beach at water level, shallow depth of field, cinematic color grading, natural detail in spray and sea foam.",
+      "note": "This is a still keyframe for the video idea, drawn with the photorealistic image model in 16:9. Once you approve it, I'll generate the final video from the same prompt as a 5-second 16:9 clip with the PicLumen Video V1 model. If you want a different look or length, tell me and I'll redraft.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.3
+}

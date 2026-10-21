@@ -1,0 +1,159 @@
+{
+  "task": {
+    "id": "R02",
+    "category": "revision",
+    "idea": "Anime illustration of a girl flying a kite on a hill.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Change it to evening with a purple sky.",
+        "approve": false
+      },
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "kite",
+      "evening",
+      "purple"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Anime illustration of a girl flying a kite on a hill.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image",
+          "response_format": "json"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime illustration of a girl flying a kite on a grassy hill. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a blue sky with fluffy white clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village in the background. Warm golden-hour sunlight, soft lighting, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_540a37f6-881f-4eda-ab7c-3f11a49838ed\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:32.992Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_540a37f6-881f-4eda-ab7c-3f11a49838ed",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_540a37f6-881f-4eda-ab7c-3f11a49838ed\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:32.992Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/713920/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_540a37f6-881f-4eda-ab7c-3f11a49838ed",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime illustration of a girl flying a kite on a grassy hill. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a blue sky with fluffy white clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village in the background. Warm golden-hour sunlight, soft lighting, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+          "note": "Draft at 3:4 portrait using PicLumen Anime V1. Approve to generate the final, or ask for changes (e.g., different aspect ratio, colors, or setting)."
+        },
+        "result": "Change it to evening with a purple sky.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime illustration of a girl flying a kite on a grassy hill in the evening. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a purple dusk sky with soft wispy clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village with warm lights in the background. Gentle evening light, purple and lavender sky gradient, soft glowing horizon, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_0a748c9c-46bc-4827-ac15-1e4395ec8657\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:39.761Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_0a748c9c-46bc-4827-ac15-1e4395ec8657",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_0a748c9c-46bc-4827-ac15-1e4395ec8657\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:39.761Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/52828/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_0a748c9c-46bc-4827-ac15-1e4395ec8657",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime illustration of a girl flying a kite on a grassy hill in the evening. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a purple dusk sky with soft wispy clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village with warm lights in the background. Gentle evening light, purple and lavender sky gradient, soft glowing horizon, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+          "note": "Revised to an evening scene with a purple sky, as requested. Still 3:4 portrait with PicLumen Anime V1. Approve to generate the final, or ask for further changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime illustration of a girl flying a kite on a grassy hill in the evening. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a purple dusk sky with soft wispy clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village with warm lights in the background. Gentle evening light, purple and lavender sky gradient, soft glowing horizon, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_8e7c86cd-dd15-48c9-b1cc-4d9a6764d935\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:47.906Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8e7c86cd-dd15-48c9-b1cc-4d9a6764d935",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_8e7c86cd-dd15-48c9-b1cc-4d9a6764d935\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:47.906Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/373335/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/373336/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/373337/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/373338/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your final set of 4 anime illustrations (3:4, evening with a purple sky) is ready.\nThe model was PicLumen Anime V1, and the job used 16 credits.\n\n- https://picsum.photos/seed/373335/768/1024\n- https://picsum.photos/seed/373336/768/1024\n- https://picsum.photos/seed/373337/768/1024\n- https://picsum.photos/seed/373338/768/1024",
+    "cost_usd": 0.0029317600000000003,
+    "num_turns": 10,
+    "usage": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 4440,
+      "cache_read_input_tokens": 72026,
+      "output_tokens": 2643
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_540a37f6-881f-4eda-ab7c-3f11a49838ed",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime illustration of a girl flying a kite on a grassy hill. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a blue sky with fluffy white clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village in the background. Warm golden-hour sunlight, soft lighting, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+      "note": "Draft at 3:4 portrait using PicLumen Anime V1. Approve to generate the final, or ask for changes (e.g., different aspect ratio, colors, or setting).",
+      "reply": "Change it to evening with a purple sky.",
+      "approve": false
+    },
+    {
+      "event": "review",
+      "job_id": "job_0a748c9c-46bc-4827-ac15-1e4395ec8657",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime illustration of a girl flying a kite on a grassy hill in the evening. A young girl with flowing hair and a summer dress stands on a rolling green hill, holding the string of a bright red and yellow kite soaring high in a purple dusk sky with soft wispy clouds. Wind tugs at her hair and dress. Wide-angle composition with the girl slightly off-center, rolling hills and a distant village with warm lights in the background. Gentle evening light, purple and lavender sky gradient, soft glowing horizon, vibrant colors, clean linework, cel shading, Studio Ghibli-inspired anime style.",
+      "note": "Revised to an evening scene with a purple sky, as requested. Still 3:4 portrait with PicLumen Anime V1. Approve to generate the final, or ask for further changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 26.1
+}

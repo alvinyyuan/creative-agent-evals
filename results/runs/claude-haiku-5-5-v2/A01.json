@@ -1,0 +1,121 @@
+{
+  "task": {
+    "id": "A01",
+    "category": "ambiguous",
+    "idea": "A picture of my cat as a superhero.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": "Cartoon or anime style please, not realistic.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "cat",
+      "superhero"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A picture of my cat as a superhero.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "What style would you like for the superhero cat: photorealistic, or illustrated (comic book, cartoon, painting)?"
+        },
+        "result": "Cartoon or anime style please, not realistic.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A cute cartoon cat superhero in anime style, a fluffy tabby cat wearing a flowing red cape with a gold emblem on the chest, a small domino mask over its eyes, and a tiny cape fluttering in the wind. The cat is standing heroically on a rooftop at dusk, city skyline glowing behind it with warm orange and purple sky. Dynamic low-angle composition, bold clean linework, cel shading, vibrant colors, expressive big eyes, sparkles and speed lines for energy. Full body, centered, polished illustration.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_6854811d-382d-41a6-b956-efc44857bf22\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:13.367Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_6854811d-382d-41a6-b956-efc44857bf22"
+        },
+        "result": "{\"job_id\":\"job_6854811d-382d-41a6-b956-efc44857bf22\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:13.367Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/981557/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_6854811d-382d-41a6-b956-efc44857bf22",
+          "model": "piclumen-anime-v1",
+          "prompt": "A cute cartoon cat superhero in anime style, a fluffy tabby cat wearing a flowing red cape with a gold emblem on the chest, a small domino mask over its eyes, and a tiny cape fluttering in the wind. The cat is standing heroically on a rooftop at dusk, city skyline glowing behind it with warm orange and purple sky. Dynamic low-angle composition, bold clean linework, cel shading, vibrant colors, expressive big eyes, sparkles and speed lines for energy. Full body, centered, polished illustration.",
+          "note": "Anime-style draft of your cat as a superhero: a tabby with a red cape, gold chest emblem and domino mask, on a rooftop at dusk. I used the anime model in 3:4 portrait. Note: I don't know your cat's actual colouring or look, so I used a generic tabby. Tell me if you'd like it changed, or approve it to generate the final."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A cute cartoon cat superhero in anime style, a fluffy tabby cat wearing a flowing red cape with a gold emblem on the chest, a small domino mask over its eyes, and a tiny cape fluttering in the wind. The cat is standing heroically on a rooftop at dusk, city skyline glowing behind it with warm orange and purple sky. Dynamic low-angle composition, bold clean linework, cel shading, vibrant colors, expressive big eyes, sparkles and speed lines for energy. Full body, centered, polished illustration.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_8bace1c8-d73a-49d0-94fd-a2f4455b9bd6\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:20.394Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8bace1c8-d73a-49d0-94fd-a2f4455b9bd6"
+        },
+        "result": "{\"job_id\":\"job_8bace1c8-d73a-49d0-94fd-a2f4455b9bd6\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:20.394Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/256761/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/256762/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/256763/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/256764/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your anime-style cat superhero is done: four 3:4 images of a tabby in a red cape, gold chest emblem and domino mask on a dusk rooftop.\nAsset URLs:\n- https://picsum.photos/seed/256761/768/1024\n- https://picsum.photos/seed/256762/768/1024\n- https://picsum.photos/seed/256763/768/1024\n- https://picsum.photos/seed/256764/768/1024",
+    "cost_usd": 0.00204171,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3215,
+      "cache_read_input_tokens": 52711,
+      "output_tokens": 1740
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "What style would you like for the superhero cat: photorealistic, or illustrated (comic book, cartoon, painting)?",
+      "reply": "Cartoon or anime style please, not realistic."
+    },
+    {
+      "event": "review",
+      "job_id": "job_6854811d-382d-41a6-b956-efc44857bf22",
+      "model": "piclumen-anime-v1",
+      "prompt": "A cute cartoon cat superhero in anime style, a fluffy tabby cat wearing a flowing red cape with a gold emblem on the chest, a small domino mask over its eyes, and a tiny cape fluttering in the wind. The cat is standing heroically on a rooftop at dusk, city skyline glowing behind it with warm orange and purple sky. Dynamic low-angle composition, bold clean linework, cel shading, vibrant colors, expressive big eyes, sparkles and speed lines for energy. Full body, centered, polished illustration.",
+      "note": "Anime-style draft of your cat as a superhero: a tabby with a red cape, gold chest emblem and domino mask, on a rooftop at dusk. I used the anime model in 3:4 portrait. Note: I don't know your cat's actual colouring or look, so I used a generic tabby. Tell me if you'd like it changed, or approve it to generate the final.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 22.0
+}

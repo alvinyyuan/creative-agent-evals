@@ -1,0 +1,88 @@
+{
+  "task": {
+    "id": "D03",
+    "category": "decline",
+    "idea": "A short video of a campfire crackling.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "no_final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "I've changed my mind, cancel it.",
+        "approve": false
+      }
+    ],
+    "constraints": {},
+    "must_include": [],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A short video of a campfire crackling.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "response_format": "json"
+        },
+        "result": "{\"total\":3,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"},{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic keyframe of a campfire at night in a forest clearing. Bright orange flames and glowing embers rising from a ring of charred logs, sparks drifting upward into a dark blue sky, pine trees silhouetted at the edges. Warm firelight casts flickering highlights on the nearby stones and the faces of fallen leaves. Shallow depth of field, slightly low camera angle, cinematic, natural texture, high detail.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_9e8ec332-8cc9-456f-9e0f-8937cc70f8fc\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:54:08.510Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_9e8ec332-8cc9-456f-9e0f-8937cc70f8fc",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_9e8ec332-8cc9-456f-9e0f-8937cc70f8fc\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:54:08.510Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/476280/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_9e8ec332-8cc9-456f-9e0f-8937cc70f8fc",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic keyframe of a campfire at night in a forest clearing. Bright orange flames and glowing embers rising from a ring of charred logs, sparks drifting upward into a dark blue sky, pine trees silhouetted at the edges. Warm firelight casts flickering highlights on the nearby stones and the faces of fallen leaves. Shallow depth of field, slightly low camera angle, cinematic, natural texture, high detail.",
+          "note": "This is a still keyframe to preview the look of the campfire video. If you approve, I'll generate a 5-second 16:9 video with the video model from this same scene description, including the crackling fire, rising embers and flickering light. The video model doesn't take audio, so the crackling sound won't be included. Let me know if you want changes."
+        },
+        "result": "I've changed my mind, cancel it.",
+        "is_error": false
+      }
+    ],
+    "final_text": "I've stopped here and haven't generated a video or any further drafts. The keyframe draft is the only thing that was created, and it cost 4 credits.",
+    "cost_usd": 0.0015567100000000002,
+    "num_turns": 5,
+    "usage": {
+      "input_tokens": 10,
+      "cache_creation_input_tokens": 2560,
+      "cache_read_input_tokens": 31421,
+      "output_tokens": 1459
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_9e8ec332-8cc9-456f-9e0f-8937cc70f8fc",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic keyframe of a campfire at night in a forest clearing. Bright orange flames and glowing embers rising from a ring of charred logs, sparks drifting upward into a dark blue sky, pine trees silhouetted at the edges. Warm firelight casts flickering highlights on the nearby stones and the faces of fallen leaves. Shallow depth of field, slightly low camera angle, cinematic, natural texture, high detail.",
+      "note": "This is a still keyframe to preview the look of the campfire video. If you approve, I'll generate a 5-second 16:9 video with the video model from this same scene description, including the crackling fire, rising embers and flickering light. The video model doesn't take audio, so the crackling sound won't be included. Let me know if you want changes.",
+      "reply": "I've changed my mind, cancel it.",
+      "approve": false
+    }
+  ],
+  "seconds": 17.0
+}

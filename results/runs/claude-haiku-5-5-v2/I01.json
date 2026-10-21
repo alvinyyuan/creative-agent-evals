@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "I01",
+    "category": "illustration",
+    "idea": "An anime-style girl with silver hair reading under a cherry tree.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "silver hair",
+      "cherry"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "An anime-style girl with silver hair reading under a cherry tree.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style girl with long flowing silver hair, sitting under a large blooming cherry tree, quietly reading an open book in her lap. Soft pink cherry blossom petals drifting through the air, dappled sunlight filtering through the branches, gentle breeze moving her hair. Peaceful spring park setting with a grassy ground and distant soft-focus background. Calm, dreamy composition, medium shot, slightly low angle. Clean cel-shaded anime illustration style with delicate linework, vibrant yet soft colors, warm golden-hour lighting.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_7177046a-4156-421d-bc87-ab292a109233\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:48.268Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_7177046a-4156-421d-bc87-ab292a109233"
+        },
+        "result": "{\"job_id\":\"job_7177046a-4156-421d-bc87-ab292a109233\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:48.268Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/2614/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_7177046a-4156-421d-bc87-ab292a109233",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime-style girl with long flowing silver hair, sitting under a large blooming cherry tree, quietly reading an open book in her lap. Soft pink cherry blossom petals drifting through the air, dappled sunlight filtering through the branches, gentle breeze moving her hair. Peaceful spring park setting with a grassy ground and distant soft-focus background. Calm, dreamy composition, medium shot, slightly low angle. Clean cel-shaded anime illustration style with delicate linework, vibrant yet soft colors, warm golden-hour lighting.",
+          "note": "Draft 1 of 1: a 3:4 anime illustration of a silver-haired girl reading under a cherry tree, with blossoms drifting and golden-hour light. Approve to generate the final (4 images by default), or ask for changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style girl with long flowing silver hair, sitting under a large blooming cherry tree, quietly reading an open book in her lap. Soft pink cherry blossom petals drifting through the air, dappled sunlight filtering through the branches, gentle breeze moving her hair. Peaceful spring park setting with a grassy ground and distant soft-focus background. Calm, dreamy composition, medium shot, slightly low angle. Clean cel-shaded anime illustration style with delicate linework, vibrant yet soft colors, warm golden-hour lighting.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_be46fb22-207b-45b1-9fbc-62702b749e86\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:55.168Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_be46fb22-207b-45b1-9fbc-62702b749e86"
+        },
+        "result": "{\"job_id\":\"job_be46fb22-207b-45b1-9fbc-62702b749e86\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:55.168Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/139165/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/139166/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/139167/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/139168/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "The final set of 4 anime illustrations (3:4) is ready, generated from the approved prompt with the PicLumen Anime V1 model.\n\nAsset URLs:\n- https://picsum.photos/seed/139165/768/1024\n- https://picsum.photos/seed/139166/768/1024\n- https://picsum.photos/seed/139167/768/1024\n- https://picsum.photos/seed/139168/768/1024",
+    "cost_usd": 0.00189966,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3079,
+      "cache_read_input_tokens": 46046,
+      "output_tokens": 1644
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_7177046a-4156-421d-bc87-ab292a109233",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime-style girl with long flowing silver hair, sitting under a large blooming cherry tree, quietly reading an open book in her lap. Soft pink cherry blossom petals drifting through the air, dappled sunlight filtering through the branches, gentle breeze moving her hair. Peaceful spring park setting with a grassy ground and distant soft-focus background. Calm, dreamy composition, medium shot, slightly low angle. Clean cel-shaded anime illustration style with delicate linework, vibrant yet soft colors, warm golden-hour lighting.",
+      "note": "Draft 1 of 1: a 3:4 anime illustration of a silver-haired girl reading under a cherry tree, with blossoms drifting and golden-hour light. Approve to generate the final (4 images by default), or ask for changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.5
+}

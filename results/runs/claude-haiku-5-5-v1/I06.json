@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "I06",
+    "category": "illustration",
+    "idea": "Studio-anime style illustration of a cosy ramen shop interior at night.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "ramen",
+      "night"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Studio-anime style illustration of a cosy ramen shop interior at night.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Studio anime style illustration of a cosy ramen shop interior at night. Warm glowing paper lanterns hang above a worn wooden counter with steaming bowls of ramen, chopsticks resting on the edge. Rain-streaked window behind shows blurred neon city lights. A friendly chef in a white headband and apron stirs a pot in the background, steam curling upward. Soft warm amber lighting contrasts with cool blue night tones outside. Detailed hand-painted backgrounds, clean linework, rich colour, cinematic framing, gentle atmospheric depth, polished Ghibli-inspired studio anime look.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_99cdb328-356d-489a-96ee-fa421b9ffcbd\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:00.151Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_99cdb328-356d-489a-96ee-fa421b9ffcbd"
+        },
+        "result": "{\"job_id\":\"job_99cdb328-356d-489a-96ee-fa421b9ffcbd\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:00.151Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/851489/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_99cdb328-356d-489a-96ee-fa421b9ffcbd",
+          "model": "piclumen-anime-v1",
+          "prompt": "Studio anime style illustration of a cosy ramen shop interior at night. Warm glowing paper lanterns hang above a worn wooden counter with steaming bowls of ramen, chopsticks resting on the edge. Rain-streaked window behind shows blurred neon city lights. A friendly chef in a white headband and apron stirs a pot in the background, steam curling upward. Soft warm amber lighting contrasts with cool blue night tones outside. Detailed hand-painted backgrounds, clean linework, rich colour, cinematic framing, gentle atmospheric depth, polished Ghibli-inspired studio anime look.",
+          "note": "Draft 1 of 1, using the PicLumen Anime V1 model at 3:4 portrait. I expanded your idea with warm lanterns, a wooden counter, ramen bowls, a rainy window with neon city lights outside, and a chef in the background. Tell me what to change, or approve it and I'll generate the final set."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Studio anime style illustration of a cosy ramen shop interior at night. Warm glowing paper lanterns hang above a worn wooden counter with steaming bowls of ramen, chopsticks resting on the edge. Rain-streaked window behind shows blurred neon city lights. A friendly chef in a white headband and apron stirs a pot in the background, steam curling upward. Soft warm amber lighting contrasts with cool blue night tones outside. Detailed hand-painted backgrounds, clean linework, rich colour, cinematic framing, gentle atmospheric depth, polished Ghibli-inspired studio anime look.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_3f5ebcaf-6b79-4dcf-955c-20e14f8cbe52\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:08.206Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_3f5ebcaf-6b79-4dcf-955c-20e14f8cbe52"
+        },
+        "result": "{\"job_id\":\"job_3f5ebcaf-6b79-4dcf-955c-20e14f8cbe52\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:08.206Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/56366/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/56367/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/56368/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/56369/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 studio-anime ramen shop images at night (3:4 portrait) with the approved prompt, using PicLumen Anime V1 (16 credits).\n\n- https://picsum.photos/seed/56366/768/1024\n- https://picsum.photos/seed/56367/768/1024\n- https://picsum.photos/seed/56368/768/1024\n- https://picsum.photos/seed/56369/768/1024",
+    "cost_usd": 0.0019482300000000002,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3178,
+      "cache_read_input_tokens": 45223,
+      "output_tokens": 1718
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_99cdb328-356d-489a-96ee-fa421b9ffcbd",
+      "model": "piclumen-anime-v1",
+      "prompt": "Studio anime style illustration of a cosy ramen shop interior at night. Warm glowing paper lanterns hang above a worn wooden counter with steaming bowls of ramen, chopsticks resting on the edge. Rain-streaked window behind shows blurred neon city lights. A friendly chef in a white headband and apron stirs a pot in the background, steam curling upward. Soft warm amber lighting contrasts with cool blue night tones outside. Detailed hand-painted backgrounds, clean linework, rich colour, cinematic framing, gentle atmospheric depth, polished Ghibli-inspired studio anime look.",
+      "note": "Draft 1 of 1, using the PicLumen Anime V1 model at 3:4 portrait. I expanded your idea with warm lanterns, a wooden counter, ramen bowls, a rainy window with neon city lights outside, and a chef in the background. Tell me what to change, or approve it and I'll generate the final set.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.4
+}

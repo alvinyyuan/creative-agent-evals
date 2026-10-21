@@ -1,0 +1,115 @@
+{
+  "task": {
+    "id": "C01",
+    "category": "constraints",
+    "idea": "Phone wallpaper, realistic photo of a pine forest in fog. 9:16, and only 2 images.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {
+      "aspect_ratio": "9:16",
+      "count": 2
+    },
+    "must_include": [
+      "pine",
+      "fog"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Phone wallpaper, realistic photo of a pine forest in fog. 9:16, and only 2 images.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Realistic photograph of a dense pine forest shrouded in soft morning fog. Tall slender pine trunks with reddish-brown bark recede into layered mist, their needle-covered branches fading into grey-white haze. Low ground cover of ferns and fallen needles in the foreground. Muted, cool palette of sage green, pale grey and faint gold where weak sunlight filters through the canopy. Diffused natural light, shallow atmospheric depth, calm and quiet mood. Shot on a full-frame camera, 35mm lens, vertical portrait composition suitable as a phone wallpaper, natural colour, fine detail.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "9:16",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_9b4302c3-62c8-4fdf-8dc2-490d5ffb276a\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:23.389Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_9b4302c3-62c8-4fdf-8dc2-490d5ffb276a",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_9b4302c3-62c8-4fdf-8dc2-490d5ffb276a\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:23.389Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/643537/576/1024\",\"width\":576,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_9b4302c3-62c8-4fdf-8dc2-490d5ffb276a",
+          "model": "piclumen-v1",
+          "prompt": "Realistic photograph of a dense pine forest shrouded in soft morning fog. Tall slender pine trunks with reddish-brown bark recede into layered mist, their needle-covered branches fading into grey-white haze. Low ground cover of ferns and fallen needles in the foreground. Muted, cool palette of sage green, pale grey and faint gold where weak sunlight filters through the canopy. Diffused natural light, shallow atmospheric depth, calm and quiet mood. Shot on a full-frame camera, 35mm lens, vertical portrait composition suitable as a phone wallpaper, natural colour, fine detail.",
+          "note": "Draft at 9:16 (576x1024). Once you approve, I'll generate the final with 2 images at 9:16. Tell me if you want changes to the mood, colours or framing."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Realistic photograph of a dense pine forest shrouded in soft morning fog. Tall slender pine trunks with reddish-brown bark recede into layered mist, their needle-covered branches fading into grey-white haze. Low ground cover of ferns and fallen needles in the foreground. Muted, cool palette of sage green, pale grey and faint gold where weak sunlight filters through the canopy. Diffused natural light, shallow atmospheric depth, calm and quiet mood. Shot on a full-frame camera, 35mm lens, vertical portrait composition suitable as a phone wallpaper, natural colour, fine detail.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "9:16",
+          "count": 2,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_2d0d30cc-20bf-4a4e-820e-e122e95f94cf\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:31.040Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_2d0d30cc-20bf-4a4e-820e-e122e95f94cf",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_2d0d30cc-20bf-4a4e-820e-e122e95f94cf\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:31.040Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/902982/576/1024\",\"width\":576,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/902983/576/1024\",\"width\":576,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":8}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your two 9:16 wallpapers of a misty pine forest are done, using the draft prompt you approved.\n\nBoth images are 576\u00d71024 and were generated with PicLumen V1 (8 credits).\n\n- https://picsum.photos/seed/902982/576/1024\n- https://picsum.photos/seed/902983/576/1024",
+    "cost_usd": 0.0019298700000000002,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3097,
+      "cache_read_input_tokens": 45657,
+      "output_tokens": 1705
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_9b4302c3-62c8-4fdf-8dc2-490d5ffb276a",
+      "model": "piclumen-v1",
+      "prompt": "Realistic photograph of a dense pine forest shrouded in soft morning fog. Tall slender pine trunks with reddish-brown bark recede into layered mist, their needle-covered branches fading into grey-white haze. Low ground cover of ferns and fallen needles in the foreground. Muted, cool palette of sage green, pale grey and faint gold where weak sunlight filters through the canopy. Diffused natural light, shallow atmospheric depth, calm and quiet mood. Shot on a full-frame camera, 35mm lens, vertical portrait composition suitable as a phone wallpaper, natural colour, fine detail.",
+      "note": "Draft at 9:16 (576x1024). Once you approve, I'll generate the final with 2 images at 9:16. Tell me if you want changes to the mood, colours or framing.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.5
+}

@@ -1,0 +1,113 @@
+{
+  "task": {
+    "id": "V04",
+    "category": "video",
+    "idea": "An animated clip of an anime fox running through a snowy forest.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "fox",
+      "snow"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "An animated clip of an anime fox running through a snowy forest.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "response_format": "json"
+        },
+        "result": "{\"total\":3,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"},{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime style keyframe of a fox running through a snowy forest. A slender anime-style fox with a bushy white-tipped orange tail and bright expressive eyes, mid-stride and leaping over a fallen log, snow spraying from its paws. Tall pine and birch trees covered in fresh snow on both sides, soft falling snowflakes, a pale winter sky glowing through the branches. Cinematic wide shot from slightly behind and to the side, dynamic motion blur on the snow, clean cel-shaded lineart, soft volumetric morning light, rich blue and white palette with warm orange accents on the fox.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "negative_prompt": "photorealistic, realistic fur, text, watermark, extra limbs, deformed face, blurry, low quality",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_5eb71064-64c4-4ae0-ab17-a175ba961ecf\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:25.574Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_5eb71064-64c4-4ae0-ab17-a175ba961ecf",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_5eb71064-64c4-4ae0-ab17-a175ba961ecf\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:25.574Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/620071/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_5eb71064-64c4-4ae0-ab17-a175ba961ecf",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime style keyframe of a fox running through a snowy forest. A slender anime-style fox with a bushy white-tipped orange tail and bright expressive eyes, mid-stride and leaping over a fallen log, snow spraying from its paws. Tall pine and birch trees covered in fresh snow on both sides, soft falling snowflakes, a pale winter sky glowing through the branches. Cinematic wide shot from slightly behind and to the side, dynamic motion blur on the snow, clean cel-shaded lineart, soft volumetric morning light, rich blue and white palette with warm orange accents on the fox.",
+          "note": "This is a single 16:9 still keyframe to check the look (anime fox, snowy forest, mid-leap) before I render the video. Once you approve it, I'll generate a 5-second 16:9 animated clip from it. Let me know if you want changes to the fox, the setting, or the camera angle."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "Anime style keyframe of a fox running through a snowy forest. A slender anime-style fox with a bushy white-tipped orange tail and bright expressive eyes, mid-stride and leaping over a fallen log, snow spraying from its paws. Tall pine and birch trees covered in fresh snow on both sides, soft falling snowflakes, a pale winter sky glowing through the branches. Cinematic wide shot from slightly behind and to the side, dynamic motion blur on the snow, clean cel-shaded lineart, soft volumetric morning light, rich blue and white palette with warm orange accents on the fox.",
+          "model": "piclumen-video-v1",
+          "duration_seconds": 5,
+          "aspect_ratio": "16:9",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_fae0b0d5-8df3-454e-a95c-0a26ee63b1cf\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:46:34.724Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_fae0b0d5-8df3-454e-a95c-0a26ee63b1cf",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_fae0b0d5-8df3-454e-a95c-0a26ee63b1cf\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:46:34.724Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 5-second anime fox clip is ready: a 16:9 video (1024\u00d7576) generated from the approved prompt with PicLumen Video V1.\nVideo URL: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.00235115,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3718,
+      "cache_read_input_tokens": 46915,
+      "output_tokens": 2274
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_5eb71064-64c4-4ae0-ab17-a175ba961ecf",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime style keyframe of a fox running through a snowy forest. A slender anime-style fox with a bushy white-tipped orange tail and bright expressive eyes, mid-stride and leaping over a fallen log, snow spraying from its paws. Tall pine and birch trees covered in fresh snow on both sides, soft falling snowflakes, a pale winter sky glowing through the branches. Cinematic wide shot from slightly behind and to the side, dynamic motion blur on the snow, clean cel-shaded lineart, soft volumetric morning light, rich blue and white palette with warm orange accents on the fox.",
+      "note": "This is a single 16:9 still keyframe to check the look (anime fox, snowy forest, mid-leap) before I render the video. Once you approve it, I'll generate a 5-second 16:9 animated clip from it. Let me know if you want changes to the fox, the setting, or the camera angle.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 22.2
+}

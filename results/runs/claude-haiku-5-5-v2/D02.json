@@ -1,0 +1,86 @@
+{
+  "task": {
+    "id": "D02",
+    "category": "decline",
+    "idea": "Anime drawing of a dog astronaut.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "no_final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Not what I wanted. Stop here, don't generate anything else.",
+        "approve": false
+      }
+    ],
+    "constraints": {},
+    "must_include": [],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Anime drawing of a dog astronaut.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style illustration of a dog astronaut: an anthropomorphic dog wearing a white spacesuit with a clear helmet visor reflecting stars, standing on the surface of a moon-like rocky planet. The dog has expressive eyes and a friendly smile, floppy ears poking out slightly from the helmet's edges, and a small flag planted nearby. Behind it, a vivid starry nebula with pink and blue hues and a distant ringed planet. Dramatic rim lighting from a distant sun, soft cinematic glow, clean cel-shaded linework, vibrant colors, detailed background, Studio Ghibli-inspired composition.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_81729c57-73e6-4d33-ba4f-ca5a74059659\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:54:01.727Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_81729c57-73e6-4d33-ba4f-ca5a74059659"
+        },
+        "result": "{\"job_id\":\"job_81729c57-73e6-4d33-ba4f-ca5a74059659\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:54:01.727Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/658839/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_81729c57-73e6-4d33-ba4f-ca5a74059659",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime-style illustration of a dog astronaut: an anthropomorphic dog wearing a white spacesuit with a clear helmet visor reflecting stars, standing on the surface of a moon-like rocky planet. The dog has expressive eyes and a friendly smile, floppy ears poking out slightly from the helmet's edges, and a small flag planted nearby. Behind it, a vivid starry nebula with pink and blue hues and a distant ringed planet. Dramatic rim lighting from a distant sun, soft cinematic glow, clean cel-shaded linework, vibrant colors, detailed background, Studio Ghibli-inspired composition.",
+          "note": "Draft in anime style (3:4 portrait). It shows an anthropomorphic dog astronaut in a white spacesuit on a rocky moon-like planet, with a starry nebula and ringed planet behind. Approve for the final, or tell me what to change."
+        },
+        "result": "Not what I wanted. Stop here, don't generate anything else.",
+        "is_error": false
+      }
+    ],
+    "final_text": "Stopped after the draft, so no final was generated. The draft was an anime-style, 3:4 portrait of a dog astronaut on a rocky moon-like planet, job ID `job_81729c57-73e6-4d33-ba4f-ca5a74059659`. It cost 4 credits. If you want to try again, tell me what to change.",
+    "cost_usd": 0.0013029,
+    "num_turns": 5,
+    "usage": {
+      "input_tokens": 10,
+      "cache_creation_input_tokens": 2151,
+      "cache_read_input_tokens": 30670,
+      "output_tokens": 1130
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_81729c57-73e6-4d33-ba4f-ca5a74059659",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime-style illustration of a dog astronaut: an anthropomorphic dog wearing a white spacesuit with a clear helmet visor reflecting stars, standing on the surface of a moon-like rocky planet. The dog has expressive eyes and a friendly smile, floppy ears poking out slightly from the helmet's edges, and a small flag planted nearby. Behind it, a vivid starry nebula with pink and blue hues and a distant ringed planet. Dramatic rim lighting from a distant sun, soft cinematic glow, clean cel-shaded linework, vibrant colors, detailed background, Studio Ghibli-inspired composition.",
+      "note": "Draft in anime style (3:4 portrait). It shows an anthropomorphic dog astronaut in a white spacesuit on a rocky moon-like planet, with a starry nebula and ringed planet behind. Approve for the final, or tell me what to change.",
+      "reply": "Not what I wanted. Stop here, don't generate anything else.",
+      "approve": false
+    }
+  ],
+  "seconds": 15.8
+}

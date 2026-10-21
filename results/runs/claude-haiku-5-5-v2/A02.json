@@ -1,0 +1,120 @@
+{
+  "task": {
+    "id": "A02",
+    "category": "ambiguous",
+    "idea": "Something for my cafe's opening day.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": "A realistic photo of a latte with latte art on a wooden table, for an Instagram post.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "latte"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Something for my cafe's opening day.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should this be a still image or a short video, and should it look photographic or illustrated (e.g., hand-drawn, watercolor, flat graphic)?"
+        },
+        "result": "A realistic photo of a latte with latte art on a wooden table, for an Instagram post.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Realistic photograph of a freshly made latte in a white ceramic cup on a warm wooden table, with detailed latte art of a rosetta pattern in the foam. Shallow depth of field with a softly blurred cafe background of warm lights and a hint of greenery. Natural morning window light from the side, soft shadows, rich coffee tones and creamy foam texture. Clean, inviting composition suited to an Instagram post, shot from a slight overhead angle.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_c804dc62-7d71-4b90-8df7-85b6245d8c99\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:15.318Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_c804dc62-7d71-4b90-8df7-85b6245d8c99"
+        },
+        "result": "{\"job_id\":\"job_c804dc62-7d71-4b90-8df7-85b6245d8c99\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:15.318Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/567899/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_c804dc62-7d71-4b90-8df7-85b6245d8c99",
+          "model": "piclumen-v1",
+          "prompt": "Realistic photograph of a freshly made latte in a white ceramic cup on a warm wooden table, with detailed latte art of a rosetta pattern in the foam. Shallow depth of field with a softly blurred cafe background of warm lights and a hint of greenery. Natural morning window light from the side, soft shadows, rich coffee tones and creamy foam texture. Clean, inviting composition suited to an Instagram post, shot from a slight overhead angle.",
+          "note": "Here's a draft: a realistic photo of a latte with rosetta latte art on a wooden table, in a square 1:1 format for Instagram. Tell me what to change, or approve it to generate the final."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Realistic photograph of a freshly made latte in a white ceramic cup on a warm wooden table, with detailed latte art of a rosetta pattern in the foam. Shallow depth of field with a softly blurred cafe background of warm lights and a hint of greenery. Natural morning window light from the side, soft shadows, rich coffee tones and creamy foam texture. Clean, inviting composition suited to an Instagram post, shot from a slight overhead angle.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_f65d4bdc-9878-4eb6-b524-ac05b6aa6d99\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:22.284Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_f65d4bdc-9878-4eb6-b524-ac05b6aa6d99"
+        },
+        "result": "{\"job_id\":\"job_f65d4bdc-9878-4eb6-b524-ac05b6aa6d99\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:22.284Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/570838/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/570839/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/570840/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/570841/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your final set of 4 square photos of a latte with latte art on a wooden table is ready, generated with PicLumen V1 from the draft you approved.\nEach image is 1024\u00d71024, sized for an Instagram post.\n\n- https://picsum.photos/seed/570838/1024/1024\n- https://picsum.photos/seed/570839/1024/1024\n- https://picsum.photos/seed/570840/1024/1024\n- https://picsum.photos/seed/570841/1024/1024",
+    "cost_usd": 0.00201462,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3177,
+      "cache_read_input_tokens": 52962,
+      "output_tokens": 1696
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should this be a still image or a short video, and should it look photographic or illustrated (e.g., hand-drawn, watercolor, flat graphic)?",
+      "reply": "A realistic photo of a latte with latte art on a wooden table, for an Instagram post."
+    },
+    {
+      "event": "review",
+      "job_id": "job_c804dc62-7d71-4b90-8df7-85b6245d8c99",
+      "model": "piclumen-v1",
+      "prompt": "Realistic photograph of a freshly made latte in a white ceramic cup on a warm wooden table, with detailed latte art of a rosetta pattern in the foam. Shallow depth of field with a softly blurred cafe background of warm lights and a hint of greenery. Natural morning window light from the side, soft shadows, rich coffee tones and creamy foam texture. Clean, inviting composition suited to an Instagram post, shot from a slight overhead angle.",
+      "note": "Here's a draft: a realistic photo of a latte with rosetta latte art on a wooden table, in a square 1:1 format for Instagram. Tell me what to change, or approve it to generate the final.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 23.2
+}

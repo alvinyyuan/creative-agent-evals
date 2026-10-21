@@ -1,0 +1,129 @@
+{
+  "task": {
+    "id": "V06",
+    "category": "video",
+    "idea": "Create a video of paper lanterns rising into a night sky.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "lantern",
+      "night"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Create a video of paper lanterns rising into a night sky.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the lanterns video look photographic (realistic footage) or illustrated (e.g., painterly or animated)?"
+        },
+        "result": "No preference, you decide.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic night scene: a dozen glowing traditional paper lanterns drifting upward into a deep indigo night sky, warm amber light from within each lantern casting soft halos, a dark silhouetted hillside with a village below and a few distant lights, faint stars and a thin crescent moon above. Wide cinematic composition, lanterns at varying heights creating depth, long-exposure feel with subtle motion softness, gentle haze, shallow atmospheric perspective. Cinematic lighting, high detail, 16:9 framing.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_8e67a712-2bfe-41cb-9333-2cebd72f34c9\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:47.091Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8e67a712-2bfe-41cb-9333-2cebd72f34c9"
+        },
+        "result": "{\"job_id\":\"job_8e67a712-2bfe-41cb-9333-2cebd72f34c9\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:47.091Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/106828/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_8e67a712-2bfe-41cb-9333-2cebd72f34c9",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic night scene: a dozen glowing traditional paper lanterns drifting upward into a deep indigo night sky, warm amber light from within each lantern casting soft halos, a dark silhouetted hillside with a village below and a few distant lights, faint stars and a thin crescent moon above. Wide cinematic composition, lanterns at varying heights creating depth, long-exposure feel with subtle motion softness, gentle haze, shallow atmospheric perspective. Cinematic lighting, high detail, 16:9 framing.",
+          "note": "This is a still keyframe for the video. You didn't specify a style, so I chose photorealistic. Once you approve it, I'll generate the 5-second video from this look. The video will use the same prompt idea, with motion added: the lanterns rise slowly into the sky."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "video"
+        },
+        "result": "{\"total\":1,\"models\":[{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "Photorealistic night scene: a dozen glowing traditional paper lanterns drifting upward into a deep indigo night sky, warm amber light from within each lantern casting soft halos, a dark silhouetted hillside with a village below and a few distant lights, faint stars and a thin crescent moon above. Wide cinematic composition, lanterns at varying heights creating depth, long-exposure feel with subtle motion softness, gentle haze, shallow atmospheric perspective. Cinematic lighting, high detail, 16:9 framing. The lanterns slowly rise into the sky over the duration of the clip.",
+          "model": "piclumen-video-v1",
+          "aspect_ratio": "16:9",
+          "duration_seconds": 5
+        },
+        "result": "{\"job_id\":\"job_31962786-3f23-4aef-b403-c5cd2223d666\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:46:58.052Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_31962786-3f23-4aef-b403-c5cd2223d666"
+        },
+        "result": "{\"job_id\":\"job_31962786-3f23-4aef-b403-c5cd2223d666\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:46:58.052Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 5-second, 16:9 video of paper lanterns rising into a night sky is ready (photorealistic style, using the approved prompt).\nVideo: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.00222427,
+    "num_turns": 9,
+    "usage": {
+      "input_tokens": 18,
+      "cache_creation_input_tokens": 3396,
+      "cache_read_input_tokens": 59927,
+      "output_tokens": 1888
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the lanterns video look photographic (realistic footage) or illustrated (e.g., painterly or animated)?",
+      "reply": "No preference, you decide."
+    },
+    {
+      "event": "review",
+      "job_id": "job_8e67a712-2bfe-41cb-9333-2cebd72f34c9",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic night scene: a dozen glowing traditional paper lanterns drifting upward into a deep indigo night sky, warm amber light from within each lantern casting soft halos, a dark silhouetted hillside with a village below and a few distant lights, faint stars and a thin crescent moon above. Wide cinematic composition, lanterns at varying heights creating depth, long-exposure feel with subtle motion softness, gentle haze, shallow atmospheric perspective. Cinematic lighting, high detail, 16:9 framing.",
+      "note": "This is a still keyframe for the video. You didn't specify a style, so I chose photorealistic. Once you approve it, I'll generate the 5-second video from this look. The video will use the same prompt idea, with motion added: the lanterns rise slowly into the sky.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 26.5
+}

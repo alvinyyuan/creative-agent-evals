@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "P02",
+    "category": "photo",
+    "idea": "Product shot of a matte black coffee grinder on a marble counter, soft window light, photorealistic.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "grinder",
+      "marble"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Product shot of a matte black coffee grinder on a marble counter, soft window light, photorealistic.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Professional product photograph of a matte black coffee grinder resting on a polished white marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a clean cylindrical body, centered in a balanced composition with shallow depth of field and a softly blurred neutral background. Soft natural window light falls from the left, creating gentle highlights on the matte surface and subtle soft shadows on the marble. Photorealistic, high detail, crisp textures, true-to-life colors, commercial product photography.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_2f75938b-2a6f-4a73-b868-03f2019950eb\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:03.353Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_2f75938b-2a6f-4a73-b868-03f2019950eb"
+        },
+        "result": "{\"job_id\":\"job_2f75938b-2a6f-4a73-b868-03f2019950eb\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:03.353Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/51308/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_2f75938b-2a6f-4a73-b868-03f2019950eb",
+          "model": "piclumen-v1",
+          "prompt": "Professional product photograph of a matte black coffee grinder resting on a polished white marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a clean cylindrical body, centered in a balanced composition with shallow depth of field and a softly blurred neutral background. Soft natural window light falls from the left, creating gentle highlights on the matte surface and subtle soft shadows on the marble. Photorealistic, high detail, crisp textures, true-to-life colors, commercial product photography.",
+          "note": "Here's the draft: a 1:1 photoreal product shot of a matte black coffee grinder on marble with soft window light from the left. I added a few details you didn't specify (brushed metal hopper lid, shallow depth of field, blurred neutral background) so the shot reads as a clean product photo. Approve it for the final, or tell me what to change (aspect ratio, lighting, background, or the grinder's design)."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Professional product photograph of a matte black coffee grinder resting on a polished white marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a clean cylindrical body, centered in a balanced composition with shallow depth of field and a softly blurred neutral background. Soft natural window light falls from the left, creating gentle highlights on the matte surface and subtle soft shadows on the marble. Photorealistic, high detail, crisp textures, true-to-life colors, commercial product photography.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_6452aea9-306f-4e31-85e2-8e0d0bd8b3d6\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:10.809Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_6452aea9-306f-4e31-85e2-8e0d0bd8b3d6"
+        },
+        "result": "{\"job_id\":\"job_6452aea9-306f-4e31-85e2-8e0d0bd8b3d6\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:10.809Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/432418/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/432419/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/432420/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/432421/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Final set of 4 images is ready: a 1:1 photoreal shot of a matte black coffee grinder on marble, lit by soft window light from the left.\nGenerated with the approved prompt on PicLumen V1 (16 credits).\n\n- https://picsum.photos/seed/432418/1024/1024\n- https://picsum.photos/seed/432419/1024/1024\n- https://picsum.photos/seed/432420/1024/1024\n- https://picsum.photos/seed/432421/1024/1024",
+    "cost_usd": 0.0018600300000000001,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3038,
+      "cache_read_input_tokens": 45003,
+      "output_tokens": 1602
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_2f75938b-2a6f-4a73-b868-03f2019950eb",
+      "model": "piclumen-v1",
+      "prompt": "Professional product photograph of a matte black coffee grinder resting on a polished white marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a clean cylindrical body, centered in a balanced composition with shallow depth of field and a softly blurred neutral background. Soft natural window light falls from the left, creating gentle highlights on the matte surface and subtle soft shadows on the marble. Photorealistic, high detail, crisp textures, true-to-life colors, commercial product photography.",
+      "note": "Here's the draft: a 1:1 photoreal product shot of a matte black coffee grinder on marble with soft window light from the left. I added a few details you didn't specify (brushed metal hopper lid, shallow depth of field, blurred neutral background) so the shot reads as a clean product photo. Approve it for the final, or tell me what to change (aspect ratio, lighting, background, or the grinder's design).",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 21.6
+}

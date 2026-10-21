@@ -1,0 +1,126 @@
+{
+  "task": {
+    "id": "V07",
+    "category": "video",
+    "idea": "A short looping video of rain on a window with city lights behind it.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "rain",
+      "window"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A short looping video of rain on a window with city lights behind it.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the rain-on-window loop look photographic (realistic footage) or illustrated (e.g., painterly or animated)?"
+        },
+        "result": "No preference, you decide.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "response_format": "json"
+        },
+        "result": "{\"total\":3,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"},{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic close-up of raindrops running down a glass window at night, sharp droplets and streaks in the foreground, the blurred bokeh of city lights glowing warm amber, teal and white behind the glass, soft reflections on the wet pane, a dim interior edge of a windowsill visible, moody cinematic atmosphere, shallow depth of field, natural light from the street lamps, calm and quiet mood.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_1ee2deed-d3cc-4848-a661-49f0e6f7a7ed\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:54.476Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_1ee2deed-d3cc-4848-a661-49f0e6f7a7ed",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_1ee2deed-d3cc-4848-a661-49f0e6f7a7ed\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:54.476Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/841689/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_1ee2deed-d3cc-4848-a661-49f0e6f7a7ed",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic close-up of raindrops running down a glass window at night, sharp droplets and streaks in the foreground, the blurred bokeh of city lights glowing warm amber, teal and white behind the glass, soft reflections on the wet pane, a dim interior edge of a windowsill visible, moody cinematic atmosphere, shallow depth of field, natural light from the street lamps, calm and quiet mood.",
+          "note": "This is a still keyframe for the video, which I'll make as a short looping clip (5 seconds, 16:9) from it once you approve. I chose photorealistic since you didn't state a style. Approve this look, or ask for changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "Photorealistic close-up of raindrops running down a glass window at night, sharp droplets and streaks in the foreground, the blurred bokeh of city lights glowing warm amber, teal and white behind the glass, soft reflections on the wet pane, a dim interior edge of a windowsill visible, moody cinematic atmosphere, shallow depth of field, natural light from the street lamps, calm and quiet mood.",
+          "model": "piclumen-video-v1",
+          "duration_seconds": 5,
+          "aspect_ratio": "16:9",
+          "image_url": "https://picsum.photos/seed/841689/1024/576",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_39e85aa4-f10b-49d0-84fd-217cd3e2cf1c\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:03.389Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_39e85aa4-f10b-49d0-84fd-217cd3e2cf1c",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_39e85aa4-f10b-49d0-84fd-217cd3e2cf1c\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:03.389Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 5-second, 16:9 video is ready, generated from the approved photorealistic keyframe.\nVideo: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.00231709,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3602,
+      "cache_read_input_tokens": 54209,
+      "output_tokens": 2106
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the rain-on-window loop look photographic (realistic footage) or illustrated (e.g., painterly or animated)?",
+      "reply": "No preference, you decide."
+    },
+    {
+      "event": "review",
+      "job_id": "job_1ee2deed-d3cc-4848-a661-49f0e6f7a7ed",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic close-up of raindrops running down a glass window at night, sharp droplets and streaks in the foreground, the blurred bokeh of city lights glowing warm amber, teal and white behind the glass, soft reflections on the wet pane, a dim interior edge of a windowsill visible, moody cinematic atmosphere, shallow depth of field, natural light from the street lamps, calm and quiet mood.",
+      "note": "This is a still keyframe for the video, which I'll make as a short looping clip (5 seconds, 16:9) from it once you approve. I chose photorealistic since you didn't state a style. Approve this look, or ask for changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 22.6
+}

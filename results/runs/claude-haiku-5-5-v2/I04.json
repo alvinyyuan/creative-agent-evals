@@ -1,0 +1,110 @@
+{
+  "task": {
+    "id": "I04",
+    "category": "illustration",
+    "idea": "Chibi anime sticker of a bubble tea cup with a happy face.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "bubble tea"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Chibi anime sticker of a bubble tea cup with a happy face.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image",
+          "response_format": "json"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Chibi anime sticker of a bubble tea cup with a happy face. A cute kawaii bubble milk tea cup with a clear plastic dome lid, pastel brown milk tea with black tapioca pearls visible at the bottom and a striped straw. The cup has a big cheerful face with sparkling eyes and a wide smile, rosy blush cheeks. Small stubby arms and legs, playful pose. Thick white die-cut sticker border around the whole design, flat cel-shaded colors, clean bold outlines, soft pastel palette, simple white background. Centered composition, cute and joyful mood.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "1:1",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_580a82d9-ea35-4ad9-a04c-66463d916373\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:52.851Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_580a82d9-ea35-4ad9-a04c-66463d916373",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_580a82d9-ea35-4ad9-a04c-66463d916373\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:52.851Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/572841/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_580a82d9-ea35-4ad9-a04c-66463d916373",
+          "model": "piclumen-anime-v1",
+          "prompt": "Chibi anime sticker of a bubble tea cup with a happy face. A cute kawaii bubble milk tea cup with a clear plastic dome lid, pastel brown milk tea with black tapioca pearls visible at the bottom and a striped straw. The cup has a big cheerful face with sparkling eyes and a wide smile, rosy blush cheeks. Small stubby arms and legs, playful pose. Thick white die-cut sticker border around the whole design, flat cel-shaded colors, clean bold outlines, soft pastel palette, simple white background. Centered composition, cute and joyful mood.",
+          "note": "Draft 1 (1:1, PicLumen Anime V1). I chose the anime model for the chibi style and added a white die-cut sticker border, a happy face, and a pearl-filled milk tea cup. Approve this to generate the final, or tell me what to change."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Chibi anime sticker of a bubble tea cup with a happy face. A cute kawaii bubble milk tea cup with a clear plastic dome lid, pastel brown milk tea with black tapioca pearls visible at the bottom and a striped straw. The cup has a big cheerful face with sparkling eyes and a wide smile, rosy blush cheeks. Small stubby arms and legs, playful pose. Thick white die-cut sticker border around the whole design, flat cel-shaded colors, clean bold outlines, soft pastel palette, simple white background. Centered composition, cute and joyful mood.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "1:1",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_d768d4ed-6b52-4327-a0cc-46fa3899edbf\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:01.112Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_d768d4ed-6b52-4327-a0cc-46fa3899edbf",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_d768d4ed-6b52-4327-a0cc-46fa3899edbf\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:01.112Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/863439/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/863440/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/863441/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/863442/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 chibi bubble tea sticker images (1:1, PicLumen Anime V1) from the approved draft prompt.\n\nYour finals are ready: four 1024\u00d71024 images.\n\n- https://picsum.photos/seed/863439/1024/1024\n- https://picsum.photos/seed/863440/1024/1024\n- https://picsum.photos/seed/863441/1024/1024\n- https://picsum.photos/seed/863442/1024/1024",
+    "cost_usd": 0.0019879,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3212,
+      "cache_read_input_tokens": 46110,
+      "output_tokens": 1766
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_580a82d9-ea35-4ad9-a04c-66463d916373",
+      "model": "piclumen-anime-v1",
+      "prompt": "Chibi anime sticker of a bubble tea cup with a happy face. A cute kawaii bubble milk tea cup with a clear plastic dome lid, pastel brown milk tea with black tapioca pearls visible at the bottom and a striped straw. The cup has a big cheerful face with sparkling eyes and a wide smile, rosy blush cheeks. Small stubby arms and legs, playful pose. Thick white die-cut sticker border around the whole design, flat cel-shaded colors, clean bold outlines, soft pastel palette, simple white background. Centered composition, cute and joyful mood.",
+      "note": "Draft 1 (1:1, PicLumen Anime V1). I chose the anime model for the chibi style and added a white die-cut sticker border, a happy face, and a pearl-filled milk tea cup. Approve this to generate the final, or tell me what to change.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 20.5
+}

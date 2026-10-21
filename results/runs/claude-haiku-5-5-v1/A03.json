@@ -1,0 +1,144 @@
+{
+  "task": {
+    "id": "A03",
+    "category": "ambiguous",
+    "idea": "A dragon over a castle.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": "A short video, the dragon circling the castle.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "dragon",
+      "castle"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A dragon over a castle.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should this be a still image or a short video, and should the style be photographic or illustrated (e.g. painterly, fantasy art, anime)?"
+        },
+        "result": "A short video, the dragon circling the castle.",
+        "is_error": false
+      },
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Got it, a video of a dragon circling a castle. Should the style be photographic (realistic) or illustrated (e.g. painterly fantasy art)?"
+        },
+        "result": "A short video, the dragon circling the castle.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A massive dragon soaring in a wide circle above a medieval stone castle on a rocky hilltop at dusk. The dragon has dark scaled wings spread wide, its long tail trailing, and its body banking into the sky with the castle's towers and battlements below. Warm orange and violet sunset light catches the dragon's scales from one side, with a few torch-lit windows glowing in the castle. Scattered clouds, a distant mountain range, cinematic wide shot, dramatic composition, realistic detail, atmospheric haze.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "negative_prompt": "text, watermark, logo, blurry, low quality, extra wings, extra heads, deformed anatomy"
+        },
+        "result": "{\"job_id\":\"job_93d0437a-6606-4a7c-9f8f-be1095d22299\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:18.691Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_93d0437a-6606-4a7c-9f8f-be1095d22299"
+        },
+        "result": "{\"job_id\":\"job_93d0437a-6606-4a7c-9f8f-be1095d22299\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:18.691Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/469369/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_93d0437a-6606-4a7c-9f8f-be1095d22299",
+          "model": "piclumen-v1",
+          "prompt": "A massive dragon soaring in a wide circle above a medieval stone castle on a rocky hilltop at dusk. The dragon has dark scaled wings spread wide, its long tail trailing, and its body banking into the sky with the castle's towers and battlements below. Warm orange and violet sunset light catches the dragon's scales from one side, with a few torch-lit windows glowing in the castle. Scattered clouds, a distant mountain range, cinematic wide shot, dramatic composition, realistic detail, atmospheric haze.",
+          "note": "This is a still keyframe for the video, not the video itself. You didn't pick a style, so I went photorealistic (the general model) at 16:9, the video's default aspect ratio. Approve it and I'll generate a 5-second video of the dragon circling the castle from it. Or ask for a changed style, such as painterly fantasy art, and I'll redraft."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "video"
+        },
+        "result": "{\"total\":1,\"models\":[{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "A massive dragon soaring in a wide circle above a medieval stone castle on a rocky hilltop at dusk. The dragon has dark scaled wings spread wide, its long tail trailing, and its body banking into the sky with the castle's towers and battlements below. Warm orange and violet sunset light catches the dragon's scales from one side, with a few torch-lit windows glowing in the castle. Scattered clouds, a distant mountain range, cinematic wide shot, dramatic composition, realistic detail, atmospheric haze.",
+          "model": "piclumen-video-v1",
+          "aspect_ratio": "16:9",
+          "duration_seconds": 5,
+          "image_url": "https://picsum.photos/seed/469369/1024/576"
+        },
+        "result": "{\"job_id\":\"job_1012162b-93ee-40bb-9b39-7104bf77e171\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:47:28.869Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_1012162b-93ee-40bb-9b39-7104bf77e171"
+        },
+        "result": "{\"job_id\":\"job_1012162b-93ee-40bb-9b39-7104bf77e171\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:47:28.869Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated a 5-second, 16:9 video of a dragon circling a castle at dusk, using the approved prompt and the approved keyframe as the starting image.\nThe style was my default (photorealistic), since you didn't specify one.\n\nVideo: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.0027489300000000006,
+    "num_turns": 10,
+    "usage": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 4017,
+      "cache_read_input_tokens": 69403,
+      "output_tokens": 2499
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should this be a still image or a short video, and should the style be photographic or illustrated (e.g. painterly, fantasy art, anime)?",
+      "reply": "A short video, the dragon circling the castle."
+    },
+    {
+      "event": "ask",
+      "question": "Got it, a video of a dragon circling a castle. Should the style be photographic (realistic) or illustrated (e.g. painterly fantasy art)?",
+      "reply": "A short video, the dragon circling the castle."
+    },
+    {
+      "event": "review",
+      "job_id": "job_93d0437a-6606-4a7c-9f8f-be1095d22299",
+      "model": "piclumen-v1",
+      "prompt": "A massive dragon soaring in a wide circle above a medieval stone castle on a rocky hilltop at dusk. The dragon has dark scaled wings spread wide, its long tail trailing, and its body banking into the sky with the castle's towers and battlements below. Warm orange and violet sunset light catches the dragon's scales from one side, with a few torch-lit windows glowing in the castle. Scattered clouds, a distant mountain range, cinematic wide shot, dramatic composition, realistic detail, atmospheric haze.",
+      "note": "This is a still keyframe for the video, not the video itself. You didn't pick a style, so I went photorealistic (the general model) at 16:9, the video's default aspect ratio. Approve it and I'll generate a 5-second video of the dragon circling the castle from it. Or ask for a changed style, such as painterly fantasy art, and I'll redraft.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 27.0
+}

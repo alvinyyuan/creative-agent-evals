@@ -1,0 +1,113 @@
+{
+  "task": {
+    "id": "P01",
+    "category": "photo",
+    "idea": "A realistic photo of a red lighthouse on a rocky coast at dawn.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "lighthouse",
+      "dawn"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A realistic photo of a red lighthouse on a rocky coast at dawn.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image",
+          "response_format": "json"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a tall red lighthouse standing on a rocky coastline at dawn. Waves break over dark wet boulders in the foreground, sea spray catching the early light. The sky glows with soft pastel pink and orange gradients near the horizon, fading to deep blue above, with a few thin clouds. The lighthouse's red paint is weathered, with a white lantern room and gallery railing. Calm, cinematic composition with the lighthouse slightly off-center, shot on a full-frame DSLR with a 24mm lens, natural soft light, crisp detail, true-to-life colours.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_f972556e-00fa-4994-ac87-fbaae9e7450b\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:02.314Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_f972556e-00fa-4994-ac87-fbaae9e7450b",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_f972556e-00fa-4994-ac87-fbaae9e7450b\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:02.314Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/418653/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_f972556e-00fa-4994-ac87-fbaae9e7450b",
+          "model": "piclumen-v1",
+          "prompt": "A realistic photograph of a tall red lighthouse standing on a rocky coastline at dawn. Waves break over dark wet boulders in the foreground, sea spray catching the early light. The sky glows with soft pastel pink and orange gradients near the horizon, fading to deep blue above, with a few thin clouds. The lighthouse's red paint is weathered, with a white lantern room and gallery railing. Calm, cinematic composition with the lighthouse slightly off-center, shot on a full-frame DSLR with a 24mm lens, natural soft light, crisp detail, true-to-life colours.",
+          "note": "Draft at 4:3 using the general-purpose photorealistic model (PicLumen V1). I chose 4:3 as a default since you didn't specify a ratio. Let me know if you'd like it in 16:9 or 9:16, or if you want changes to the composition, lighting or colours. Approve to generate the final set (4 images by default)."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a tall red lighthouse standing on a rocky coastline at dawn. Waves break over dark wet boulders in the foreground, sea spray catching the early light. The sky glows with soft pastel pink and orange gradients near the horizon, fading to deep blue above, with a few thin clouds. The lighthouse's red paint is weathered, with a white lantern room and gallery railing. Calm, cinematic composition with the lighthouse slightly off-center, shot on a full-frame DSLR with a 24mm lens, natural soft light, crisp detail, true-to-life colours.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 4,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_d1518fcb-36bd-4a83-bf16-0286707141d5\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:09.835Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_d1518fcb-36bd-4a83-bf16-0286707141d5",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_d1518fcb-36bd-4a83-bf16-0286707141d5\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:09.835Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/791438/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/791439/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/791440/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/791441/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 photorealistic 4:3 images of a red lighthouse on a rocky dawn coast using PicLumen V1 (16 credits).\n\n- https://picsum.photos/seed/791438/1024/768\n- https://picsum.photos/seed/791439/1024/768\n- https://picsum.photos/seed/791440/1024/768\n- https://picsum.photos/seed/791441/1024/768",
+    "cost_usd": 0.0018350200000000001,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 2551,
+      "cache_read_input_tokens": 45942,
+      "output_tokens": 1728
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_f972556e-00fa-4994-ac87-fbaae9e7450b",
+      "model": "piclumen-v1",
+      "prompt": "A realistic photograph of a tall red lighthouse standing on a rocky coastline at dawn. Waves break over dark wet boulders in the foreground, sea spray catching the early light. The sky glows with soft pastel pink and orange gradients near the horizon, fading to deep blue above, with a few thin clouds. The lighthouse's red paint is weathered, with a white lantern room and gallery railing. Calm, cinematic composition with the lighthouse slightly off-center, shot on a full-frame DSLR with a 24mm lens, natural soft light, crisp detail, true-to-life colours.",
+      "note": "Draft at 4:3 using the general-purpose photorealistic model (PicLumen V1). I chose 4:3 as a default since you didn't specify a ratio. Let me know if you'd like it in 16:9 or 9:16, or if you want changes to the composition, lighting or colours. Approve to generate the final set (4 images by default).",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 21.3
+}

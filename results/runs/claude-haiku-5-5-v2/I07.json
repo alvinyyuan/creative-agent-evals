@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "I07",
+    "category": "illustration",
+    "idea": "Anime character portrait: a young wizard with a glowing staff, blue robes.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "wizard",
+      "staff"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Anime character portrait: a young wizard with a glowing staff, blue robes.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style character portrait of a young wizard with a glowing staff. A youthful wizard with messy silver-blue hair and bright determined eyes, wearing flowing deep blue robes with silver trim and a high collar, a loose hood resting behind the shoulders. Holding a tall wooden staff topped with a luminous crystal that casts soft cyan and white light. Upper-body framing, three-quarter view, slight smile, dynamic hair movement. Setting: a twilight starry sky with faint magical runes drifting in the air. Lighting: the staff's glow rims the face and robes, with soft blue ambient light. Clean cel shading, detailed linework, vibrant colors, high-quality anime illustration.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_a03fad16-6192-40be-a455-09a003a4844d\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:10.849Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_a03fad16-6192-40be-a455-09a003a4844d"
+        },
+        "result": "{\"job_id\":\"job_a03fad16-6192-40be-a455-09a003a4844d\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:10.849Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/563670/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_a03fad16-6192-40be-a455-09a003a4844d",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime-style character portrait of a young wizard with a glowing staff. A youthful wizard with messy silver-blue hair and bright determined eyes, wearing flowing deep blue robes with silver trim and a high collar, a loose hood resting behind the shoulders. Holding a tall wooden staff topped with a luminous crystal that casts soft cyan and white light. Upper-body framing, three-quarter view, slight smile, dynamic hair movement. Setting: a twilight starry sky with faint magical runes drifting in the air. Lighting: the staff's glow rims the face and robes, with soft blue ambient light. Clean cel shading, detailed linework, vibrant colors, high-quality anime illustration.",
+          "note": "Draft from PicLumen Anime V1, 3:4 portrait, 1 image. I chose the anime model since the idea is an anime-style illustration. I added details the idea left open: silver-blue hair, a hood, a crystal-topped staff, a starry twilight backdrop with runes, and three-quarter framing. Approve this as-is for the final, or ask for changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style character portrait of a young wizard with a glowing staff. A youthful wizard with messy silver-blue hair and bright determined eyes, wearing flowing deep blue robes with silver trim and a high collar, a loose hood resting behind the shoulders. Holding a tall wooden staff topped with a luminous crystal that casts soft cyan and white light. Upper-body framing, three-quarter view, slight smile, dynamic hair movement. Setting: a twilight starry sky with faint magical runes drifting in the air. Lighting: the staff's glow rims the face and robes, with soft blue ambient light. Clean cel shading, detailed linework, vibrant colors, high-quality anime illustration.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_69192792-1200-49ef-a9bf-1c2786f31cba\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:17.996Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_69192792-1200-49ef-a9bf-1c2786f31cba"
+        },
+        "result": "{\"job_id\":\"job_69192792-1200-49ef-a9bf-1c2786f31cba\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:17.996Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/301215/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/301216/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/301217/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/301218/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 anime portraits of the young wizard (3:4, PicLumen Anime V1) from the approved draft prompt.\n\nAsset URLs:\n- https://picsum.photos/seed/301215/768/1024\n- https://picsum.photos/seed/301216/768/1024\n- https://picsum.photos/seed/301217/768/1024\n- https://picsum.photos/seed/301218/768/1024",
+    "cost_usd": 0.0020154400000000003,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3246,
+      "cache_read_input_tokens": 46384,
+      "output_tokens": 1802
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_a03fad16-6192-40be-a455-09a003a4844d",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime-style character portrait of a young wizard with a glowing staff. A youthful wizard with messy silver-blue hair and bright determined eyes, wearing flowing deep blue robes with silver trim and a high collar, a loose hood resting behind the shoulders. Holding a tall wooden staff topped with a luminous crystal that casts soft cyan and white light. Upper-body framing, three-quarter view, slight smile, dynamic hair movement. Setting: a twilight starry sky with faint magical runes drifting in the air. Lighting: the staff's glow rims the face and robes, with soft blue ambient light. Clean cel shading, detailed linework, vibrant colors, high-quality anime illustration.",
+      "note": "Draft from PicLumen Anime V1, 3:4 portrait, 1 image. I chose the anime model since the idea is an anime-style illustration. I added details the idea left open: silver-blue hair, a hood, a crystal-topped staff, a starry twilight backdrop with runes, and three-quarter framing. Approve this as-is for the final, or ask for changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 17.9
+}

@@ -1,0 +1,107 @@
+{
+  "task": {
+    "id": "D03",
+    "category": "decline",
+    "idea": "A short video of a campfire crackling.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "no_final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "I've changed my mind, cancel it.",
+        "approve": false
+      }
+    ],
+    "constraints": {},
+    "must_include": [],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A short video of a campfire crackling.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the campfire video look photorealistic (filmed-style footage) or illustrated (like an animated or painterly scene)?"
+        },
+        "result": "No preference, you decide.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "video"
+        },
+        "result": "{\"total\":1,\"models\":[{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic close-up of a campfire at night, orange flames licking up from a ring of charred logs, glowing embers drifting upward into the dark sky, sparks crackling off the wood. Dark forest clearing around it, pine trees silhouetted at the edges, warm firelight casting flickering amber light on the nearby ground and tree bark. Cinematic composition, shallow depth of field, soft bokeh, natural lighting, sharp detail on the burning wood and embers.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_093f530f-45e4-44d9-9162-9a69e545e8b2\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:08.174Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_093f530f-45e4-44d9-9162-9a69e545e8b2"
+        },
+        "result": "{\"job_id\":\"job_093f530f-45e4-44d9-9162-9a69e545e8b2\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:08.174Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/507563/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_093f530f-45e4-44d9-9162-9a69e545e8b2",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic close-up of a campfire at night, orange flames licking up from a ring of charred logs, glowing embers drifting upward into the dark sky, sparks crackling off the wood. Dark forest clearing around it, pine trees silhouetted at the edges, warm firelight casting flickering amber light on the nearby ground and tree bark. Cinematic composition, shallow depth of field, soft bokeh, natural lighting, sharp detail on the burning wood and embers.",
+          "note": "This is a still keyframe for the video, in photorealistic style (you left the style to me). I'll animate it into a 5-second clip with the same prompt, 16:9, once you approve. Video generation only starts after your approval."
+        },
+        "result": "I've changed my mind, cancel it.",
+        "is_error": false
+      }
+    ],
+    "final_text": "Okay, I've cancelled it. I haven't generated anything else, so no further credits were used. The draft keyframe cost 4 credits. If you want to try the campfire video again later, I can start from a new prompt.",
+    "cost_usd": 0.0014946,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 12,
+      "cache_creation_input_tokens": 2471,
+      "cache_read_input_tokens": 37270,
+      "output_tokens": 1253
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the campfire video look photorealistic (filmed-style footage) or illustrated (like an animated or painterly scene)?",
+      "reply": "No preference, you decide."
+    },
+    {
+      "event": "review",
+      "job_id": "job_093f530f-45e4-44d9-9162-9a69e545e8b2",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic close-up of a campfire at night, orange flames licking up from a ring of charred logs, glowing embers drifting upward into the dark sky, sparks crackling off the wood. Dark forest clearing around it, pine trees silhouetted at the edges, warm firelight casting flickering amber light on the nearby ground and tree bark. Cinematic composition, shallow depth of field, soft bokeh, natural lighting, sharp detail on the burning wood and embers.",
+      "note": "This is a still keyframe for the video, in photorealistic style (you left the style to me). I'll animate it into a 5-second clip with the same prompt, 16:9, once you approve. Video generation only starts after your approval.",
+      "reply": "I've changed my mind, cancel it.",
+      "approve": false
+    }
+  ],
+  "seconds": 19.0
+}

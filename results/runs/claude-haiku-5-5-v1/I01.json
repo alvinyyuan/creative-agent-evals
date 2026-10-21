@@ -1,0 +1,113 @@
+{
+  "task": {
+    "id": "I01",
+    "category": "illustration",
+    "idea": "An anime-style girl with silver hair reading under a cherry tree.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "silver hair",
+      "cherry"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "An anime-style girl with silver hair reading under a cherry tree.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image",
+          "response_format": "json"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style illustration of a young girl with long flowing silver hair, sitting cross-legged on a wooden bench, reading a book quietly. She wears a light cardigan over a pleated skirt, her eyes gently focused on the pages. A large cherry tree in full pink bloom stands above her, with petals drifting through the air and scattering across the grass. Soft dappled sunlight filters through the branches, warm golden hour lighting, gentle depth of field with a blurred garden background. Clean linework, soft cel shading, vibrant yet calm color palette, peaceful atmosphere.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_f68576df-53f9-40a5-a326-5ce98cba3d80\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:41.590Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_f68576df-53f9-40a5-a326-5ce98cba3d80",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_f68576df-53f9-40a5-a326-5ce98cba3d80\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:41.590Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/458833/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_f68576df-53f9-40a5-a326-5ce98cba3d80",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime-style illustration of a young girl with long flowing silver hair, sitting cross-legged on a wooden bench, reading a book quietly. She wears a light cardigan over a pleated skirt, her eyes gently focused on the pages. A large cherry tree in full pink bloom stands above her, with petals drifting through the air and scattering across the grass. Soft dappled sunlight filters through the branches, warm golden hour lighting, gentle depth of field with a blurred garden background. Clean linework, soft cel shading, vibrant yet calm color palette, peaceful atmosphere.",
+          "note": "Draft (3:4, PicLumen Anime V1). I chose the anime model since you asked for anime style, and added a bench, cardigan, and drifting petals to flesh out the scene. Tell me what to change, or approve it to generate the final."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime-style illustration of a young girl with long flowing silver hair, sitting cross-legged on a wooden bench, reading a book quietly. She wears a light cardigan over a pleated skirt, her eyes gently focused on the pages. A large cherry tree in full pink bloom stands above her, with petals drifting through the air and scattering across the grass. Soft dappled sunlight filters through the branches, warm golden hour lighting, gentle depth of field with a blurred garden background. Clean linework, soft cel shading, vibrant yet calm color palette, peaceful atmosphere.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_5e7e8936-1c3a-49d1-bee0-698ea65e9604\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:48.387Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_5e7e8936-1c3a-49d1-bee0-698ea65e9604",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_5e7e8936-1c3a-49d1-bee0-698ea65e9604\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:48.387Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/49418/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/49419/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/49420/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/49421/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 anime-style images (3:4) of a silver-haired girl reading under a cherry tree, using PicLumen Anime V1 with the approved prompt.\nCharged 16 credits for the final set, after 4 credits for the draft.\n\n- https://picsum.photos/seed/49418/768/1024\n- https://picsum.photos/seed/49419/768/1024\n- https://picsum.photos/seed/49420/768/1024\n- https://picsum.photos/seed/49421/768/1024",
+    "cost_usd": 0.0019806199999999998,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3196,
+      "cache_read_input_tokens": 45352,
+      "output_tokens": 1773
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_f68576df-53f9-40a5-a326-5ce98cba3d80",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime-style illustration of a young girl with long flowing silver hair, sitting cross-legged on a wooden bench, reading a book quietly. She wears a light cardigan over a pleated skirt, her eyes gently focused on the pages. A large cherry tree in full pink bloom stands above her, with petals drifting through the air and scattering across the grass. Soft dappled sunlight filters through the branches, warm golden hour lighting, gentle depth of field with a blurred garden background. Clean linework, soft cel shading, vibrant yet calm color palette, peaceful atmosphere.",
+      "note": "Draft (3:4, PicLumen Anime V1). I chose the anime model since you asked for anime style, and added a bench, cardigan, and drifting petals to flesh out the scene. Tell me what to change, or approve it to generate the final.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.3
+}

@@ -1,0 +1,173 @@
+{
+  "task": {
+    "id": "R03",
+    "category": "revision",
+    "idea": "A video of a sailboat on a calm lake.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Add a storm coming in on the horizon.",
+        "approve": false
+      },
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "sailboat",
+      "storm"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A video of a sailboat on a calm lake.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the sailboat video look photographic (realistic footage) or illustrated (e.g., painterly or animated)?"
+        },
+        "result": "No preference, you decide.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "video"
+        },
+        "result": "{\"total\":1,\"models\":[{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A single white sailboat with a billowing mainsail gliding across a perfectly calm lake at golden hour. Mirror-smooth water reflects the boat, the soft pink and orange sky, and distant wooded hills shrouded in light morning haze. Wide shot from the shoreline, low angle close to the water, gentle sunlight glinting on the surface. Photorealistic, cinematic composition, serene and peaceful mood, shallow natural depth of field, sharp detail on the sail and hull.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_7efc3e64-0c53-4baf-9295-a56e9b1544eb\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:43.461Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_7efc3e64-0c53-4baf-9295-a56e9b1544eb"
+        },
+        "result": "{\"job_id\":\"job_7efc3e64-0c53-4baf-9295-a56e9b1544eb\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:43.461Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/79050/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_7efc3e64-0c53-4baf-9295-a56e9b1544eb",
+          "model": "piclumen-v1",
+          "prompt": "A single white sailboat with a billowing mainsail gliding across a perfectly calm lake at golden hour. Mirror-smooth water reflects the boat, the soft pink and orange sky, and distant wooded hills shrouded in light morning haze. Wide shot from the shoreline, low angle close to the water, gentle sunlight glinting on the surface. Photorealistic, cinematic composition, serene and peaceful mood, shallow natural depth of field, sharp detail on the sail and hull.",
+          "note": "This is a keyframe draft for the video, since videos are only generated after approval. I chose a photorealistic style because you had no preference and it suits a calm lake scene. Approve this and I'll generate the 5-second 16:9 video from it with PicLumen Video V1 (image-to-video). Let me know if you'd like changes."
+        },
+        "result": "Add a storm coming in on the horizon.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A single white sailboat with a billowing mainsail gliding across a calm lake. The water is mirror-smooth and reflects the boat. On the horizon, a dark storm front is coming in, with heavy grey-blue clouds, rain curtains and a dramatic sky, while the foreground stays still and tranquil. Distant wooded hills shrouded in haze. Wide shot from the shoreline, low angle close to the water. Photorealistic, cinematic composition, moody but peaceful contrast, shallow natural depth of field, sharp detail on the sail and hull.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_7339781b-1139-4d78-9c6a-1fe7d8d0e44c\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:49.921Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_7339781b-1139-4d78-9c6a-1fe7d8d0e44c"
+        },
+        "result": "{\"job_id\":\"job_7339781b-1139-4d78-9c6a-1fe7d8d0e44c\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:49.921Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/587368/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_7339781b-1139-4d78-9c6a-1fe7d8d0e44c",
+          "model": "piclumen-v1",
+          "prompt": "A single white sailboat with a billowing mainsail gliding across a calm lake. The water is mirror-smooth and reflects the boat. On the horizon, a dark storm front is coming in, with heavy grey-blue clouds, rain curtains and a dramatic sky, while the foreground stays still and tranquil. Distant wooded hills shrouded in haze. Wide shot from the shoreline, low angle close to the water. Photorealistic, cinematic composition, moody but peaceful contrast, shallow natural depth of field, sharp detail on the sail and hull.",
+          "note": "Revised per your request: added a storm front coming in on the horizon while the lake and boat stay calm in the foreground. This is still a keyframe. Approve it and I'll generate the 5-second 16:9 video from it with PicLumen Video V1."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "A single white sailboat with a billowing mainsail gliding across a calm lake. The water is mirror-smooth and reflects the boat. On the horizon, a dark storm front is coming in, with heavy grey-blue clouds, rain curtains and a dramatic sky, while the foreground stays still and tranquil. Distant wooded hills shrouded in haze. Wide shot from the shoreline, low angle close to the water. Photorealistic, cinematic composition, moody but peaceful contrast, shallow natural depth of field, sharp detail on the sail and hull.",
+          "model": "piclumen-video-v1",
+          "duration_seconds": 5,
+          "aspect_ratio": "16:9",
+          "image_url": "https://picsum.photos/seed/587368/1024/576"
+        },
+        "result": "{\"job_id\":\"job_88ce7f5c-271e-4c46-99ac-ba04b6160feb\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:57.886Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_88ce7f5c-271e-4c46-99ac-ba04b6160feb"
+        },
+        "result": "{\"job_id\":\"job_88ce7f5c-271e-4c46-99ac-ba04b6160feb\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:57.886Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 5-second, 16:9 sailboat video is ready, generated from the approved storm-front keyframe.\nThe lake and boat stay calm in the foreground while a storm builds on the horizon.\n\nVideo: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.0032998199999999997,
+    "num_turns": 12,
+    "usage": {
+      "input_tokens": 22,
+      "cache_creation_input_tokens": 4900,
+      "cache_read_input_tokens": 81262,
+      "output_tokens": 3010
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the sailboat video look photographic (realistic footage) or illustrated (e.g., painterly or animated)?",
+      "reply": "No preference, you decide."
+    },
+    {
+      "event": "review",
+      "job_id": "job_7efc3e64-0c53-4baf-9295-a56e9b1544eb",
+      "model": "piclumen-v1",
+      "prompt": "A single white sailboat with a billowing mainsail gliding across a perfectly calm lake at golden hour. Mirror-smooth water reflects the boat, the soft pink and orange sky, and distant wooded hills shrouded in light morning haze. Wide shot from the shoreline, low angle close to the water, gentle sunlight glinting on the surface. Photorealistic, cinematic composition, serene and peaceful mood, shallow natural depth of field, sharp detail on the sail and hull.",
+      "note": "This is a keyframe draft for the video, since videos are only generated after approval. I chose a photorealistic style because you had no preference and it suits a calm lake scene. Approve this and I'll generate the 5-second 16:9 video from it with PicLumen Video V1 (image-to-video). Let me know if you'd like changes.",
+      "reply": "Add a storm coming in on the horizon.",
+      "approve": false
+    },
+    {
+      "event": "review",
+      "job_id": "job_7339781b-1139-4d78-9c6a-1fe7d8d0e44c",
+      "model": "piclumen-v1",
+      "prompt": "A single white sailboat with a billowing mainsail gliding across a calm lake. The water is mirror-smooth and reflects the boat. On the horizon, a dark storm front is coming in, with heavy grey-blue clouds, rain curtains and a dramatic sky, while the foreground stays still and tranquil. Distant wooded hills shrouded in haze. Wide shot from the shoreline, low angle close to the water. Photorealistic, cinematic composition, moody but peaceful contrast, shallow natural depth of field, sharp detail on the sail and hull.",
+      "note": "Revised per your request: added a storm front coming in on the horizon while the lake and boat stay calm in the foreground. This is still a keyframe. Approve it and I'll generate the 5-second 16:9 video from it with PicLumen Video V1.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 26.8
+}

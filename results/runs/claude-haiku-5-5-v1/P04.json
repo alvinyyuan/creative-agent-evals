@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "P04",
+    "category": "photo",
+    "idea": "Make me a realistic shot of a golden retriever puppy asleep in autumn leaves.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "retriever",
+      "leaves"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Make me a realistic shot of a golden retriever puppy asleep in autumn leaves.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic shot of a sleeping golden retriever puppy curled up on its side in a pile of crisp autumn leaves, eyes closed, soft fur catching warm light, paws tucked under its chin. Leaves in orange, red and yellow scattered over damp forest floor, a few resting on its back. Shallow depth of field with a softly blurred background of birch and maple trunks in golden afternoon light. Shot at eye level with a 85mm lens, natural soft sunlight filtering through the canopy, gentle warm color grading, sharp focus on the puppy's face.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_5ed2dd9a-0814-427a-9517-3d303e971790\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:02.720Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_5ed2dd9a-0814-427a-9517-3d303e971790"
+        },
+        "result": "{\"job_id\":\"job_5ed2dd9a-0814-427a-9517-3d303e971790\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:02.720Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/334543/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_5ed2dd9a-0814-427a-9517-3d303e971790",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic shot of a sleeping golden retriever puppy curled up on its side in a pile of crisp autumn leaves, eyes closed, soft fur catching warm light, paws tucked under its chin. Leaves in orange, red and yellow scattered over damp forest floor, a few resting on its back. Shallow depth of field with a softly blurred background of birch and maple trunks in golden afternoon light. Shot at eye level with a 85mm lens, natural soft sunlight filtering through the canopy, gentle warm color grading, sharp focus on the puppy's face.",
+          "note": "Here's the draft: a photorealistic golden retriever puppy asleep in autumn leaves, shot at 4:3 with a shallow depth of field and warm afternoon light through birch and maple trees. Should I make the final (4 images by default), or would you like changes first?"
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic shot of a sleeping golden retriever puppy curled up on its side in a pile of crisp autumn leaves, eyes closed, soft fur catching warm light, paws tucked under its chin. Leaves in orange, red and yellow scattered over damp forest floor, a few resting on its back. Shallow depth of field with a softly blurred background of birch and maple trunks in golden afternoon light. Shot at eye level with a 85mm lens, natural soft sunlight filtering through the canopy, gentle warm color grading, sharp focus on the puppy's face.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_2c14360d-e03a-4540-b3ca-dd6e579b5473\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:09.076Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_2c14360d-e03a-4540-b3ca-dd6e579b5473"
+        },
+        "result": "{\"job_id\":\"job_2c14360d-e03a-4540-b3ca-dd6e579b5473\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:09.076Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/940505/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/940506/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/940507/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/940508/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your final is ready: 4 photorealistic images of a golden retriever puppy asleep in autumn leaves, at 4:3 with the approved prompt.\n\nhttps://picsum.photos/seed/940505/1024/768\nhttps://picsum.photos/seed/940506/1024/768\nhttps://picsum.photos/seed/940507/1024/768\nhttps://picsum.photos/seed/940508/1024/768",
+    "cost_usd": 0.0018484399999999998,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3030,
+      "cache_read_input_tokens": 45004,
+      "output_tokens": 1582
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_5ed2dd9a-0814-427a-9517-3d303e971790",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic shot of a sleeping golden retriever puppy curled up on its side in a pile of crisp autumn leaves, eyes closed, soft fur catching warm light, paws tucked under its chin. Leaves in orange, red and yellow scattered over damp forest floor, a few resting on its back. Shallow depth of field with a softly blurred background of birch and maple trunks in golden afternoon light. Shot at eye level with a 85mm lens, natural soft sunlight filtering through the canopy, gentle warm color grading, sharp focus on the puppy's face.",
+      "note": "Here's the draft: a photorealistic golden retriever puppy asleep in autumn leaves, shot at 4:3 with a shallow depth of field and warm afternoon light through birch and maple trees. Should I make the final (4 images by default), or would you like changes first?",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 18.1
+}

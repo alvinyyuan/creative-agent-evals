@@ -1,0 +1,112 @@
+{
+  "task": {
+    "id": "I02",
+    "category": "illustration",
+    "idea": "Manga-style illustration of a samurai cat standing on a rooftop at sunset.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "samurai",
+      "cat"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Manga-style illustration of a samurai cat standing on a rooftop at sunset.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Manga-style illustration of an anthropomorphic samurai cat standing on a rooftop at sunset. The cat wears traditional armor (dark lacquered plates, a wrapped helmet with crescent ornament) and holds a katana at its side, tail swaying. It stands tall on the edge of a tiled Japanese roof, gazing toward the horizon. Behind it, a warm orange and crimson sunset fades into purple clouds, with silhouetted rooftops and distant pagoda towers. Dynamic composition, low angle, bold black ink linework, screentone shading and hatching, dramatic rim lighting from the setting sun, high contrast black-and-white accents with subtle warm sunset color.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_8d9ed1c5-b520-4d59-9964-c0359e900c5b\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:49.743Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8d9ed1c5-b520-4d59-9964-c0359e900c5b",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_8d9ed1c5-b520-4d59-9964-c0359e900c5b\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:49.743Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/65380/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_8d9ed1c5-b520-4d59-9964-c0359e900c5b",
+          "model": "piclumen-anime-v1",
+          "prompt": "Manga-style illustration of an anthropomorphic samurai cat standing on a rooftop at sunset. The cat wears traditional armor (dark lacquered plates, a wrapped helmet with crescent ornament) and holds a katana at its side, tail swaying. It stands tall on the edge of a tiled Japanese roof, gazing toward the horizon. Behind it, a warm orange and crimson sunset fades into purple clouds, with silhouetted rooftops and distant pagoda towers. Dynamic composition, low angle, bold black ink linework, screentone shading and hatching, dramatic rim lighting from the setting sun, high contrast black-and-white accents with subtle warm sunset color.",
+          "note": "Draft 1 of the samurai cat on a sunset rooftop, in the anime/manga model at 3:4 portrait. I added armor, a katana, a tiled roof, pagoda silhouettes, and screentone-style inking to fit the manga look. Approve to generate the final, or tell me what to change."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Manga-style illustration of an anthropomorphic samurai cat standing on a rooftop at sunset. The cat wears traditional armor (dark lacquered plates, a wrapped helmet with crescent ornament) and holds a katana at its side, tail swaying. It stands tall on the edge of a tiled Japanese roof, gazing toward the horizon. Behind it, a warm orange and crimson sunset fades into purple clouds, with silhouetted rooftops and distant pagoda towers. Dynamic composition, low angle, bold black ink linework, screentone shading and hatching, dramatic rim lighting from the setting sun, high contrast black-and-white accents with subtle warm sunset color.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_c308f0e9-e671-45bf-acf6-69944ec793de\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:56.347Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_c308f0e9-e671-45bf-acf6-69944ec793de",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_c308f0e9-e671-45bf-acf6-69944ec793de\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:56.347Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/817311/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/817312/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/817313/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/817314/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 manga-style samurai cat images on a sunset rooftop (3:4, PicLumen Anime V1) from your approved draft.\nAsset URLs:\n- https://picsum.photos/seed/817311/768/1024\n- https://picsum.photos/seed/817312/768/1024\n- https://picsum.photos/seed/817313/768/1024\n- https://picsum.photos/seed/817314/768/1024",
+    "cost_usd": 0.0020559800000000002,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3308,
+      "cache_read_input_tokens": 46448,
+      "output_tokens": 1857
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_8d9ed1c5-b520-4d59-9964-c0359e900c5b",
+      "model": "piclumen-anime-v1",
+      "prompt": "Manga-style illustration of an anthropomorphic samurai cat standing on a rooftop at sunset. The cat wears traditional armor (dark lacquered plates, a wrapped helmet with crescent ornament) and holds a katana at its side, tail swaying. It stands tall on the edge of a tiled Japanese roof, gazing toward the horizon. Behind it, a warm orange and crimson sunset fades into purple clouds, with silhouetted rooftops and distant pagoda towers. Dynamic composition, low angle, bold black ink linework, screentone shading and hatching, dramatic rim lighting from the setting sun, high contrast black-and-white accents with subtle warm sunset color.",
+      "note": "Draft 1 of the samurai cat on a sunset rooftop, in the anime/manga model at 3:4 portrait. I added armor, a katana, a tiled roof, pagoda silhouettes, and screentone-style inking to fit the manga look. Approve to generate the final, or tell me what to change.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 17.4
+}

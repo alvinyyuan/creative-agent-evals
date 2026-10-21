@@ -1,0 +1,132 @@
+{
+  "task": {
+    "id": "A03",
+    "category": "ambiguous",
+    "idea": "A dragon over a castle.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": "A short video, the dragon circling the castle.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "dragon",
+      "castle"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A dragon over a castle.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should this be a still image or a short video, and should the style be photographic or illustrated (e.g. painterly, fantasy art, anime)?"
+        },
+        "result": "A short video, the dragon circling the castle.",
+        "is_error": false
+      },
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Got it, a short video of the dragon circling the castle. Should the style be photographic (realistic) or illustrated (e.g. painterly fantasy art)?"
+        },
+        "result": "A short video, the dragon circling the castle.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {},
+        "result": "{\"total\":3,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"},{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A massive dragon with dark scaled wings spread wide, circling high above a medieval stone castle on a rocky hilltop at golden hour. Stone towers with pennant flags, a drawbridge and surrounding forest below. Wide cinematic composition with the dragon in mid-glide, banking around the castle, soft warm sunlight, low clouds, dramatic sky with depth and atmospheric haze. Photorealistic, sharp detail, cinematic lighting, as a keyframe for a video of the dragon circling the castle.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_8019b93c-cac0-43c6-aef5-2272aab2cd00\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:22.104Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8019b93c-cac0-43c6-aef5-2272aab2cd00"
+        },
+        "result": "{\"job_id\":\"job_8019b93c-cac0-43c6-aef5-2272aab2cd00\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:53:22.104Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/201623/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_8019b93c-cac0-43c6-aef5-2272aab2cd00",
+          "model": "piclumen-v1",
+          "prompt": "A massive dragon with dark scaled wings spread wide, circling high above a medieval stone castle on a rocky hilltop at golden hour. Stone towers with pennant flags, a drawbridge and surrounding forest below. Wide cinematic composition with the dragon in mid-glide, banking around the castle, soft warm sunlight, low clouds, dramatic sky with depth and atmospheric haze. Photorealistic, sharp detail, cinematic lighting, as a keyframe for a video of the dragon circling the castle.",
+          "note": "This is a still keyframe for the short video (16:9). You didn't specify a style, so I went photorealistic. If you'd prefer an illustrated look, tell me and I'll redraft. Approve to make the final video (5 seconds by default), or ask for changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "A massive dragon with dark scaled wings spread wide, circling high above a medieval stone castle on a rocky hilltop at golden hour. Stone towers with pennant flags, a drawbridge and surrounding forest below. Wide cinematic composition with the dragon in mid-glide, banking around the castle, soft warm sunlight, low clouds, dramatic sky with depth and atmospheric haze. Photorealistic, sharp detail, cinematic lighting, as a keyframe for a video of the dragon circling the castle.",
+          "model": "piclumen-video-v1",
+          "aspect_ratio": "16:9",
+          "duration_seconds": 5
+        },
+        "result": "{\"job_id\":\"job_7d3ba219-2b5b-4c1c-a106-ae5e7e74422a\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:30.159Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_7d3ba219-2b5b-4c1c-a106-ae5e7e74422a"
+        },
+        "result": "{\"job_id\":\"job_7d3ba219-2b5b-4c1c-a106-ae5e7e74422a\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:30.159Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 5-second 16:9 video of a dragon circling a castle is ready (model: piclumen-video-v1, job job_7d3ba219-2b5b-4c1c-a106-ae5e7e74422a).\nI used the photorealistic prompt from the approved draft, since you didn't specify a style.\n\nVideo: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.00257647,
+    "num_turns": 9,
+    "usage": {
+      "input_tokens": 18,
+      "cache_creation_input_tokens": 3835,
+      "cache_read_input_tokens": 62117,
+      "output_tokens": 2373
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should this be a still image or a short video, and should the style be photographic or illustrated (e.g. painterly, fantasy art, anime)?",
+      "reply": "A short video, the dragon circling the castle."
+    },
+    {
+      "event": "ask",
+      "question": "Got it, a short video of the dragon circling the castle. Should the style be photographic (realistic) or illustrated (e.g. painterly fantasy art)?",
+      "reply": "A short video, the dragon circling the castle."
+    },
+    {
+      "event": "review",
+      "job_id": "job_8019b93c-cac0-43c6-aef5-2272aab2cd00",
+      "model": "piclumen-v1",
+      "prompt": "A massive dragon with dark scaled wings spread wide, circling high above a medieval stone castle on a rocky hilltop at golden hour. Stone towers with pennant flags, a drawbridge and surrounding forest below. Wide cinematic composition with the dragon in mid-glide, banking around the castle, soft warm sunlight, low clouds, dramatic sky with depth and atmospheric haze. Photorealistic, sharp detail, cinematic lighting, as a keyframe for a video of the dragon circling the castle.",
+      "note": "This is a still keyframe for the short video (16:9). You didn't specify a style, so I went photorealistic. If you'd prefer an illustrated look, tell me and I'll redraft. Approve to make the final video (5 seconds by default), or ask for changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 26.7
+}

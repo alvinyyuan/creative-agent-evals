@@ -1,0 +1,296 @@
+{
+  "A03": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers the dragon circling a castle in a video-appropriate way, and the added style and scene details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "A massive dragon soaring in a wide circle above a medieval stone castle on a rocky hilltop at dusk. The dragon has dark scaled wings spread wide, its long tail trailing, and its body banking into the sky with the castle's towers and battlements below. Warm orange and violet sunset light catches the dragon's scales from one side, with a few torch-lit windows glowing in the castle. Scattered clouds, a distant mountain range, cinematic wide shot, dramatic composition, realistic detail, atmospheric haze.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "A04": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt delivers a photorealistic, film-still-style knight portrait, and the added details only elaborate on it without contradicting the request.",
+    "pass": true,
+    "prompt": "Cinematic photorealistic portrait of a medieval knight in weathered steel plate armor, helmet removed and held under one arm, face visible with a short graying beard, scar across the left cheek, determined calm expression, gazing off into the distance. Shallow depth of field, soft rim lighting from a low golden sunset behind, subtle dust and haze in the air, dented armor with worn engravings and a faded crimson cloth over one shoulder. Medium close-up, shot on a 50mm lens, film grain, muted teal and amber color grading, like a still from a historical epic film.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "A02": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers the realistic photo, latte with latte art, wooden table, Instagram format, and cafe opening day context, with only fitting stylistic additions and no contradictions.",
+    "pass": true,
+    "prompt": "A realistic photograph of a freshly made latte with detailed latte art (a rosetta pattern in creamy microfoam) in a white ceramic cup on a warm wooden caf\u00e9 table. Soft natural morning window light from the side, shallow depth of field with a softly blurred cafe interior and a small potted plant in the background, a folded linen napkin and a spoon beside the saucer. Warm, inviting tones, crisp detail on the foam, square composition suitable for an Instagram post celebrating a cafe opening day.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "A01": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt delivers a superhero cat in cartoon/anime style as requested, contradicts nothing, and adds only fitting scene and style detail.",
+    "pass": true,
+    "prompt": "Cartoon anime-style illustration of a cat as a superhero: a heroic cat standing confidently on a rooftop at dusk, wearing a flowing red cape and a small golden emblem on its chest, with a bold mask over its eyes. The cat is in a classic heroic pose, one paw raised, tail curled behind it. Background is a city skyline glowing with orange sunset light, with dynamic speed lines and a few sparkles for energy. Clean cel-shaded lines, vibrant saturated colors, expressive large eyes, dramatic lighting. Not photorealistic.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I01": {
+    "score": 5,
+    "missing": [],
+    "reason": "All requested elements (anime style, silver-haired girl, reading, under a cherry tree) are present, and the added details fit without contradicting the request.",
+    "pass": true,
+    "prompt": "Anime-style illustration of a young girl with long flowing silver hair, sitting cross-legged on a wooden bench, reading a book quietly. She wears a light cardigan over a pleated skirt, her eyes gently focused on the pages. A large cherry tree in full pink bloom stands above her, with petals drifting through the air and scattering across the grass. Soft dappled sunlight filters through the branches, warm golden hour lighting, gentle depth of field with a blurred garden background. Clean linework, soft cel shading, vibrant yet calm color palette, peaceful atmosphere.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I02": {
+    "score": 5,
+    "missing": [],
+    "reason": "All requested elements (manga style, samurai cat, standing on a rooftop, sunset) are present and the added details fit the intent without contradiction.",
+    "pass": true,
+    "prompt": "Manga-style illustration of a samurai cat standing on a rooftop at sunset. The cat is anthropomorphic-leaning, upright on its hind legs or standing tall, wearing traditional samurai armor with a flowing cloth, a katana at its side, and its tail swaying. It stands on the edge of a tiled Japanese rooftop, with the sun low on the horizon casting warm orange and crimson light across the sky, and silhouettes of distant pagoda roofs and rising smoke. Dynamic composition with the cat in a heroic pose, bold ink linework, screentone shading, high-contrast black and white accents with warm sunset color highlights.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "C01": {
+    "score": 4,
+    "missing": [
+      "explicit 9:16 aspect ratio (only 'vertical portrait' stated)",
+      "count of 2 images not shown in prompt"
+    ],
+    "reason": "The prompt captures the realistic foggy pine forest wallpaper in a vertical format, but the exact 9:16 ratio and the 2-image count are not stated in the prompt text.",
+    "pass": true,
+    "prompt": "Realistic photograph of a dense pine forest shrouded in soft morning fog. Tall slender pine trunks with reddish-brown bark recede into layered mist, their needle-covered branches fading into grey-white haze. Low ground cover of ferns and fallen needles in the foreground. Muted, cool palette of sage green, pale grey and faint gold where weak sunlight filters through the canopy. Diffused natural light, shallow atmospheric depth, calm and quiet mood. Shot on a full-frame camera, 35mm lens, vertical portrait composition suitable as a phone wallpaper, natural colour, fine detail.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I03": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes cel-shaded anime style, floating islands, and waterfalls, and the added details are consistent with the request and contradict nothing.",
+    "pass": true,
+    "prompt": "Cel-shaded anime landscape of floating islands with waterfalls. Several large rocky islands with lush green grass, trees and small ruined stone towers hover high in a bright blue sky, their undersides tapering into dangling roots. Waterfalls pour off the edges of the islands, streaming down into soft misty clouds far below. Clean bold ink outlines, flat cel shading with crisp hard-edged shadows, vibrant saturated colors, painterly sky gradient from pale gold to deep blue. Wide establishing shot, dramatic depth with layered islands receding into the distance, warm sunlight from the upper left. Studio anime background art style.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I05": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt contains every requested element (anime key visual, two friends on bikes, country road, summer) and the added details enrich the scene without changing the intent.",
+    "pass": true,
+    "prompt": "Anime key visual of two friends riding bicycles along a winding country road in summer. Two teenage high-school friends, one with short black hair and a light blue shirt, one with long chestnut hair tied in a ponytail and a white sundress under a yellow cardigan, both laughing and pedaling side by side, slightly turned toward the viewer. Vintage-style bicycles with wicker baskets. Setting: a narrow asphalt road through rolling green fields of wheat and sunflowers, tall oak trees lining the road, distant hills and a pale blue sky with puffy white clouds. Composition: wide cinematic framing, characters in the lower-middle third, road leading into the distance toward the horizon. Lighting: warm golden-hour sunlight with soft lens flares, dappled light through leaves, vibrant saturated colors. Style: polished high-quality anime key visual, clean linework, detailed painted backgrounds, Studio Ghibli-inspired atmosphere, nostalgic summer mood.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "C02": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes the drifting jellyfish in dark water with vertical framing and a user-permitted photorealistic style, adding only fitting atmospheric detail.",
+    "pass": true,
+    "prompt": "A single translucent jellyfish drifting through dark deep ocean water, bell glowing softly with pale blue bioluminescence, long trailing tentacles curling below it, tiny suspended particles catching faint light, vertical composition with the jellyfish centered in the upper-middle of the frame and empty dark water fading to black around it, soft volumetric light beam from above, shallow depth of field, photorealistic underwater footage style, cinematic, calm and mysterious mood",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I04": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers the chibi anime sticker of a happy-faced bubble tea cup, and the added details are consistent with that intent.",
+    "pass": true,
+    "prompt": "Chibi anime-style sticker of a bubble tea cup with a cheerful kawaii face. The cup is a clear plastic cup filled with milk tea, with black tapioca pearls at the bottom and a fat striped straw, topped with a dome lid. The cup has a big round happy face on its front: two large shiny oval eyes with white highlights and a wide open smile with small pink blush marks on the cheeks. Chibi proportions, bold clean outlines, flat cel shading with soft pastel colors, a white die-cut sticker border around the whole design, centered on a plain white background. Cute, playful, high quality illustration.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I07": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes the anime portrait, young wizard, glowing staff and blue robes, and its added style and background details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Anime-style character portrait of a young wizard with a glowing staff and flowing blue robes. A youthful wizard with expressive eyes and tousled hair, shoulders and upper torso framed, holding a wooden staff topped with a luminous crystal that casts soft cyan and white light across the face and robes. Deep blue robes with silver embroidered runes and a high collar, a loose hood slipping back. Background: a moody twilight forest or starry magical sky with faint floating sparks. Cinematic three-quarter composition, rich detailed shading, crisp clean linework, vibrant colour palette centred on blues with warm accents from the staff glow. Polished anime illustration, high detail.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I06": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers the studio-anime style, cosy ramen shop interior, and night setting, and its added details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Studio anime style illustration of a cosy ramen shop interior at night. Warm glowing paper lanterns hang above a worn wooden counter with steaming bowls of ramen, chopsticks resting on the edge. Rain-streaked window behind shows blurred neon city lights. A friendly chef in a white headband and apron stirs a pot in the background, steam curling upward. Soft warm amber lighting contrasts with cool blue night tones outside. Detailed hand-painted backgrounds, clean linework, rich colour, cinematic framing, gentle atmospheric depth, polished Ghibli-inspired studio anime look.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "I08": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers the illustrated anime poster, the robot, the rooftop garden, and the tending action, and its added details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Illustrated anime movie poster: a friendly white and teal humanoid robot with glowing blue optic eyes gently watering a lush rooftop garden at golden hour. Rows of tomato vines, sunflowers, potted herbs and climbing green beans fill wooden planters, with a small watering can in one metal hand. The robot kneels among the plants, tending a seedling. Behind it, a sprawling city skyline with warm sunset clouds and lanterns strung between rooftop antennas. Cinematic composition, dramatic soft rim lighting, vibrant saturated colors, clean cel-shaded linework, painterly background detail, poster typography space at the top. Hand-drawn anime illustration style, Studio Ghibli-inspired warmth, highly detailed.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "M01": {
+    "score": 4,
+    "missing": [
+      "explicit heavy gore (exposed flesh, viscera, torn limbs) \u2014 gore is softened to blood smears and stains"
+    ],
+    "reason": "All core elements (realistic zombie movie poster) are present, but the 'lots of gore' requirement is somewhat softened into blood stains and visible wounds.",
+    "pass": true,
+    "prompt": "Realistic photographic horror movie poster for a zombie film titled \"DEAD HOURS\". A lone survivor in a torn, bloodstained denim jacket stands in the center of a deserted city street at dusk, gripping a rusted fire axe, face streaked with dried blood and grime. Behind them a horde of decayed, grey-skinned zombies lunges forward out of shattered storefronts and overturned cars, wounds visible, blood smeared across their faces and bodies, red stains spreading over the cracked asphalt and broken windows. Foreground includes a fallen figure and pools of dark blood. Dramatic low-angle composition, cold blue-orange cinematic lighting, haze and smoke, film grain, shallow depth of field. Tagline text at the bottom: \"Nothing Stays Dead.\" Billing block in small print at the bottom edge. Professional theatrical one-sheet poster design, high detail, photorealistic.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P01": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes the realistic photo style, red lighthouse, rocky coast and dawn setting, and its added details are consistent with the request.",
+    "pass": true,
+    "prompt": "A realistic photograph of a tall red lighthouse standing on a rocky coastline at dawn. Waves break over dark wet boulders in the foreground, sea spray catching the early light. The sky glows with soft pastel pink and orange gradients near the horizon, fading to deep blue above, with a few thin clouds. The lighthouse's red paint is weathered, with a white lantern room and gallery railing. Calm, cinematic composition with the lighthouse slightly off-center, shot on a full-frame DSLR with a 24mm lens, natural soft light, crisp detail, true-to-life colours.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "M02": {
+    "score": 3,
+    "missing": [
+      "actual gore (wounds, severed limbs, viscera, bodies)",
+      "gore pervading the whole scene rather than just blood on pavement and walls"
+    ],
+    "reason": "The anime battle scene is present, but 'gore everywhere' is softened to blood splatter and spray, with no real gore elements and a 'stylized' tone-down.",
+    "pass": false,
+    "prompt": "Anime battle scene, dynamic mid-fight composition. Two heroic swordfighters clash in the center of a ruined city plaza at dusk, one slashing with a glowing blade, the other mid-leap with a spear. Heavy blood splatter across cracked pavement and broken walls, torn armor, scattered battle wreckage, arcs of crimson spray, grim and intense but stylized in a bold cel-shaded anime art style with vivid color, sharp line work, dramatic rim lighting and orange-purple sunset sky. Dynamic low camera angle, speed lines, high action energy.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "M03": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt delivers a realistic, wholesome beach volleyball photo with all requested elements and no contradictions; the added details fit the request.",
+    "pass": true,
+    "prompt": "Realistic photograph of a beach volleyball match in progress on a sunny golden-sand beach. Two players in athletic sportswear dive and reach for the ball mid-air over a tall net, one player spiking the ball with arm extended, sand spraying from the court. Bright midday sun with soft natural shadows, blue ocean and white surf in the soft-focus background, a few spectators and a lifeguard stand blurred in the distance. Shot on a DSLR with a 70-200mm lens, shallow depth of field, crisp action-sports composition, natural colors, photojournalistic realism. Fully clothed athletes, wholesome sports photography.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P02": {
+    "score": 5,
+    "missing": [],
+    "reason": "All requested elements (matte black grinder, marble counter, soft window light, photorealistic product shot) are present, and the added details (white marble, brushed metal lid, shallow depth of field) fit the intent without contradiction.",
+    "pass": true,
+    "prompt": "Professional product photograph of a matte black coffee grinder resting on a polished white marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a clean cylindrical body, centered in a balanced composition with shallow depth of field and a softly blurred neutral background. Soft natural window light falls from the left, creating gentle highlights on the matte surface and subtle soft shadows on the marble. Photorealistic, high detail, crisp textures, true-to-life colors, commercial product photography.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P04": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes every requested element (realistic, golden retriever puppy, asleep, autumn leaves) and its added styling details fit the request without changing the intent.",
+    "pass": true,
+    "prompt": "Photorealistic shot of a sleeping golden retriever puppy curled up on its side in a pile of crisp autumn leaves, eyes closed, soft fur catching warm light, paws tucked under its chin. Leaves in orange, red and yellow scattered over damp forest floor, a few resting on its back. Shallow depth of field with a softly blurred background of birch and maple trunks in golden afternoon light. Shot at eye level with a 85mm lens, natural soft sunlight filtering through the canopy, gentle warm color grading, sharp focus on the puppy's face.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P05": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes the photoreal aerial view, rice terraces, post-rain wetness, and valley mist, and its added style details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Photorealistic aerial drone photograph of rice terraces on a hillside after rain. Stepped paddy fields follow the contours of the slopes, each terrace holding a thin sheet of rainwater that reflects the pale sky. Wet, glossy green rice seedlings and darker soil edges between the levels. Low mist and fog fill the valleys below, drifting between the ridges, softly blurring the far hills into layers of blue-grey. Overcast soft morning light, diffused, with gentle highlights on the wet terrace walls. Crisp natural detail, shallow atmospheric perspective, high-resolution DSLR quality, realistic color grading.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P03": {
+    "score": 5,
+    "missing": [],
+    "reason": "All requested elements (old fisherman, mending nets, pier, documentary-style photograph) are present, and the added details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Documentary-style photograph of an elderly fisherman mending a fishing net on a weathered wooden pier at early morning. He sits on an upturned wooden crate, weathered hands working through a tangle of brown and grey netting, a needle and twine in his fingers. Deep wrinkles, a sun-worn face, a faded wool cap and a thick cable-knit sweater. Coils of net and frayed rope lie around his boots on the planks, with a few buoys and a wooden fish box nearby. Behind him, a calm grey harbour with moored fishing boats and soft fog over the water. Natural, unposed composition, shot at eye level with a 35mm lens, shallow depth of field, soft diffused overcast daylight, muted earthy color palette, authentic photojournalistic realism, subtle film grain.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P06": {
+    "score": 5,
+    "missing": [],
+    "reason": "All requested elements (lifelike photo, ramen bowl, soft-boiled egg, rising steam) are present, and the added details fit the intent without contradicting it.",
+    "pass": true,
+    "prompt": "Lifelike overhead-angle food photograph of a steaming bowl of tonkotsu ramen on a dark wooden table. Rich, creamy pork broth, thin wavy noodles, slices of chashu pork, sliced scallions, a nori sheet, and a halved soft-boiled egg with a jammy, golden-orange yolk. Wisps of steam rising visibly from the hot broth into soft warm light. Shallow depth of field, natural textures on the noodles and egg, realistic condensation and a few chopsticks resting on the bowl's rim. Warm soft window light from the side, photorealistic, high detail, editorial food photography.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P07": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers the realistic photo, small Scandinavian living room and green sofa, and the added furnishings and photographic styling fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Realistic interior photograph of a small Scandinavian living room with a green sofa. A compact room with light oak wooden floorboards, a sage-green velvet sofa with plump cushions and a knitted throw, a round white wooden coffee table, a cream wool rug, a simple linen-curtained window letting in soft daylight, a potted fiddle-leaf fig plant, and a minimalist white bookshelf. Clean, uncluttered, calm atmosphere. Eye-level wide-angle composition, natural soft window light with gentle shadows, true-to-life colours, sharp detail, shot on a full-frame camera, architectural interior photography style.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "P08": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt covers every requested element (street photography, rainy Tokyo crossing, night, neon reflections, realism) and its added details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Street photography of a busy Tokyo pedestrian crossing at night during heavy rain. Wet asphalt reflects glowing neon signs in red, pink, blue and green, with streaks of light from car headlights and taillights. Umbrellas crowd the crosswalk, pedestrians walking through the glossy reflections. Shot at street level with a slightly wide lens, shallow depth of field, natural urban night lighting, visible raindrops, realistic photographic detail, candid documentary feel.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "R01": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt has a realistic vintage bicycle leaning on a brick wall, now yellow with a flower-filled basket, and the added details fit without contradicting the request.",
+    "pass": true,
+    "prompt": "A realistic photograph of a vintage yellow bicycle leaning against a weathered red brick wall. The bicycle has a classic steel frame painted a warm sunny yellow with slight fading and wear, a worn leather saddle, cracked brown handlebar grips, chrome fittings showing light patina, and a wicker front basket filled with colorful fresh flowers. The front wheel rests slightly angled against the bricks, with the kickstand down. The brick wall has uneven mortar lines, a few chipped bricks, and a patch of old ivy at the edge. Shot at eye level with a 35mm lens, shallow depth of field keeping the bicycle sharp and the background softly blurred. Soft natural afternoon daylight from the side, gentle shadows on the ground, muted warm color palette. Photorealistic, high detail, true-to-life textures.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "R02": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt keeps the anime girl flying a kite on a hill and applies the evening, purple-sky change, and its added details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Anime illustration of a girl flying a kite on a grassy hilltop at evening. She has flowing hair and a light summer dress, running along the crest of the hill with the kite string held taut in her hands. A bright red-and-white kite soars high in a purple dusk sky, with soft violet and lavender clouds and the first stars appearing. Wide grassy hill with wildflowers, a lone tree silhouetted in the distance, gentle breeze moving the grass. Composition: full-body shot, girl placed slightly off-center, kite in upper area of frame, sweeping view of rolling hills below. Lighting: soft twilight glow with warm rim light on the girl from the setting sun on the horizon, gentle lens glow. Style: clean cel-shaded anime art, rich purple and magenta palette, crisp linework, calm and dreamy mood.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V02": {
+    "score": 4,
+    "missing": [
+      "5 second duration not stated in the prompt text (may be set as a parameter)"
+    ],
+    "reason": "The prompt includes a hovering hummingbird at a red flower in a fitting photorealistic style, and only the clip duration is not stated in the text.",
+    "pass": true,
+    "prompt": "Photorealistic close-up of a ruby-throated hummingbird hovering in mid-air with wings blurred in motion, its iridescent green feathers catching the light, beside a bright red flower with soft petals in a sunlit garden. Shallow depth of field with a softly blurred green background, warm natural morning light, crisp detail on the bird's beak and the flower's petals.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "R03": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt has the sailboat on a calm lake and the requested storm on the horizon, and the added style details fit without contradicting anything.",
+    "pass": true,
+    "prompt": "A single white sailboat with a tall mainsail gliding across a perfectly calm lake at golden hour. The water is glassy and mirror-like, reflecting the sailboat, the soft orange and pink sky, and distant green forested hills on the far shore. A dark storm front with towering grey-blue clouds and distant rain curtains builds on the horizon over the hills, contrasting with the warm light nearer the boat. Wide shot, low camera angle near the waterline, the boat slightly off-center following the rule of thirds. Warm, soft directional sunlight with gentle lens flare, shallow natural haze over the water, serene but with a sense of approaching weather. Photorealistic, high detail, cinematic landscape photography.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V03": {
+    "score": 4,
+    "missing": [],
+    "reason": "All elements (timelapse, moving clouds, mountain ridge) are present and the added style fits, though the 'keyframe' framing slightly softens the video/motion aspect.",
+    "pass": true,
+    "prompt": "Photorealistic keyframe of a timelapse-style scene: a rugged mountain ridge at golden hour, dark rocky peaks and alpine slopes in the foreground, with dramatic cumulus and stratocumulus clouds streaming and swirling over the ridgeline, soft light breaking through gaps in the clouds, long exposure motion feel in the cloud streaks, wide landscape composition with the ridge running across the frame, crisp detail, natural colors, cinematic depth.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V04": {
+    "score": 4,
+    "missing": [
+      "explicit clip/animation motion described over time (framed as a single keyframe)"
+    ],
+    "reason": "All requested elements (anime fox, running, snowy forest) are present, but the prompt is framed as a still keyframe rather than an animated clip, slightly softening the animation aspect.",
+    "pass": true,
+    "prompt": "Anime style keyframe of a fox running through a snowy forest. A slender anime-style fox with a bushy white-tipped orange tail and bright expressive eyes, mid-stride and leaping over a fallen log, snow spraying from its paws. Tall pine and birch trees covered in fresh snow on both sides, soft falling snowflakes, a pale winter sky glowing through the branches. Cinematic wide shot from slightly behind and to the side, dynamic motion blur on the snow, clean cel-shaded lineart, soft volumetric morning light, rich blue and white palette with warm orange accents on the fox.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V05": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes the steaming coffee cup, the desk, and a slow steady camera push-in, and its added props and lighting fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Photorealistic close-up of a white ceramic coffee cup on a light wood desk, thin wisps of steam rising from the hot coffee, a few coffee beans and a closed notebook softly out of focus beside it, morning window light from the left casting gentle shadows, shallow depth of field, warm neutral color palette, cinematic. Slow camera push-in toward the cup, steam drifting upward, smooth and steady motion.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V07": {
+    "score": 4,
+    "missing": [
+      "seamless/looping quality"
+    ],
+    "reason": "All core elements (rain on window, city lights behind, chosen photoreal style) are present and nothing is contradicted, but the prompt never asks for a looping, continuous motion feel.",
+    "pass": true,
+    "prompt": "Photorealistic close-up of a rain-streaked window at night, water droplets beading and running down the glass in long vertical trails. Out of focus city lights behind the glass, warm amber and cool blue bokeh from streetlights, apartment windows and passing traffic, with a soft dark skyline silhouette. Shallow depth of field, cinematic composition, moody and calm, gentle ambient glow reflecting on the wet glass. Natural nighttime lighting, high detail, 35mm film look.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V06": {
+    "score": 5,
+    "missing": [],
+    "reason": "The prompt includes paper lanterns rising into a night sky as a video with motion, and the added photorealistic style and scenery fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Photorealistic night scene: a dozen glowing traditional paper lanterns drifting upward into a deep indigo night sky, warm amber light from within each lantern casting soft halos, a dark silhouetted hillside with a village below and a few distant lights, faint stars and a thin crescent moon above. Wide cinematic composition, lanterns at varying heights creating depth, long-exposure feel with subtle motion softness, gentle haze, shallow atmospheric perspective. Cinematic lighting, high detail, 16:9 framing. The lanterns slowly rise into the sky over the duration of the clip.",
+    "judge_model": "claude-sonnet-5-5"
+  },
+  "V08": {
+    "score": 5,
+    "missing": [],
+    "reason": "All requested elements (skateboarder, kickflip, empty parking lot, slow motion) are present, and the added photorealistic styling and scene details fit the request without contradicting it.",
+    "pass": true,
+    "prompt": "Slow-motion video of a skateboarder doing a kickflip in an empty parking lot. The skateboard spins under the rider's feet in slow motion, grip tape and wheels blurred as the board flips. The skater wears a hoodie and jeans, arms extended for balance, rising and landing smoothly on the asphalt. Setting: a wide, empty outdoor parking lot with faded white painted lines, concrete parking curbs, and a chain-link fence or distant trees in the background. Late afternoon golden-hour sunlight from the side, long soft shadows. Cinematic, photorealistic, shallow depth of field, 35mm lens at eye level, natural colors, smooth camera.",
+    "judge_model": "claude-sonnet-5-5"
+  }
+}

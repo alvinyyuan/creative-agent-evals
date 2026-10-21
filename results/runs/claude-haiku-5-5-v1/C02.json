@@ -1,0 +1,128 @@
+{
+  "task": {
+    "id": "C02",
+    "category": "constraints",
+    "idea": "An 8 second vertical video (9:16) of a jellyfish drifting in dark water.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {
+      "aspect_ratio": "9:16",
+      "duration_seconds": 8
+    },
+    "must_include": [
+      "jellyfish"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "An 8 second vertical video (9:16) of a jellyfish drifting in dark water.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the jellyfish video look photorealistic (like real underwater footage) or illustrated (like animation or painted art)?"
+        },
+        "result": "No preference, you decide.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "response_format": "json"
+        },
+        "result": "{\"total\":3,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"},{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A single translucent jellyfish drifting through dark deep ocean water, bell glowing softly with pale blue bioluminescence, long trailing tentacles curling below it, tiny suspended particles catching faint light, vertical composition with the jellyfish centered in the upper-middle of the frame and empty dark water fading to black around it, soft volumetric light beam from above, shallow depth of field, photorealistic underwater footage style, cinematic, calm and mysterious mood",
+          "model": "piclumen-v1",
+          "aspect_ratio": "9:16",
+          "count": 1,
+          "negative_prompt": "text, watermark, logo, multiple jellyfish, people, divers, fish, blurry, distorted, extra limbs",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_7185102f-80df-45e8-854c-f6b84b717bc5\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:38.092Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_7185102f-80df-45e8-854c-f6b84b717bc5",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_7185102f-80df-45e8-854c-f6b84b717bc5\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:48:38.092Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/927291/576/1024\",\"width\":576,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_7185102f-80df-45e8-854c-f6b84b717bc5",
+          "model": "piclumen-v1",
+          "prompt": "A single translucent jellyfish drifting through dark deep ocean water, bell glowing softly with pale blue bioluminescence, long trailing tentacles curling below it, tiny suspended particles catching faint light, vertical composition with the jellyfish centered in the upper-middle of the frame and empty dark water fading to black around it, soft volumetric light beam from above, shallow depth of field, photorealistic underwater footage style, cinematic, calm and mysterious mood",
+          "note": "You didn't have a style preference, so I went photorealistic to match the \"underwater footage\" feel. This is a still keyframe for the 8-second 9:16 video. If you approve, I'll animate it as an 8-second vertical clip with the video model."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "A single translucent jellyfish drifting through dark deep ocean water, bell glowing softly with pale blue bioluminescence, long trailing tentacles curling below it, tiny suspended particles catching faint light, vertical composition with the jellyfish centered in the upper-middle of the frame and empty dark water fading to black around it, soft volumetric light beam from above, shallow depth of field, photorealistic underwater footage style, cinematic, calm and mysterious mood",
+          "model": "piclumen-video-v1",
+          "aspect_ratio": "9:16",
+          "duration_seconds": 8,
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_905ab07b-1fb0-4087-8e28-51cde8ac0baf\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:48:45.688Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_905ab07b-1fb0-4087-8e28-51cde8ac0baf",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_905ab07b-1fb0-4087-8e28-51cde8ac0baf\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:48:45.688Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":576,\"height\":1024,\"duration_seconds\":8,\"mime_type\":\"video/mp4\"}],\"credits_charged\":80}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your 8-second, 9:16 jellyfish video is ready, and it cost 80 credits. I chose a photorealistic underwater style since you had no preference, and used the approved draft prompt.\n\nVideo (576\u00d71024, 8 s): https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\n\nThe asset URL points to a generic Google sample-video bucket, not a PicLumen-hosted file, and the draft image URL was also a placeholder (picsum.photos). Please open the video and confirm it shows a jellyfish before you use it. If it doesn't, I can regenerate the clip.",
+    "cost_usd": 0.0024094700000000004,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3545,
+      "cache_read_input_tokens": 53237,
+      "output_tokens": 2333
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the jellyfish video look photorealistic (like real underwater footage) or illustrated (like animation or painted art)?",
+      "reply": "No preference, you decide."
+    },
+    {
+      "event": "review",
+      "job_id": "job_7185102f-80df-45e8-854c-f6b84b717bc5",
+      "model": "piclumen-v1",
+      "prompt": "A single translucent jellyfish drifting through dark deep ocean water, bell glowing softly with pale blue bioluminescence, long trailing tentacles curling below it, tiny suspended particles catching faint light, vertical composition with the jellyfish centered in the upper-middle of the frame and empty dark water fading to black around it, soft volumetric light beam from above, shallow depth of field, photorealistic underwater footage style, cinematic, calm and mysterious mood",
+      "note": "You didn't have a style preference, so I went photorealistic to match the \"underwater footage\" feel. This is a still keyframe for the 8-second 9:16 video. If you approve, I'll animate it as an 8-second vertical clip with the video model.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 26.2
+}

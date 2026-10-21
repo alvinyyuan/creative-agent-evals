@@ -1,0 +1,40 @@
+{
+  "task": {
+    "id": "V01",
+    "category": "video",
+    "idea": "A short video of waves rolling onto a beach at sunset.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "wave",
+      "sunset"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A short video of waves rolling onto a beach at sunset.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [],
+    "final_text": "Should this look photorealistic (like real footage) or illustrated (like an animated painting or cartoon)?",
+    "cost_usd": 0.00014089000000000001,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 5719,
+      "output_tokens": 167
+    },
+    "error": null
+  },
+  "user_log": [],
+  "seconds": 6.0
+}

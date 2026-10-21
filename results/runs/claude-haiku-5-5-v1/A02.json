@@ -1,0 +1,120 @@
+{
+  "task": {
+    "id": "A02",
+    "category": "ambiguous",
+    "idea": "Something for my cafe's opening day.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": "A realistic photo of a latte with latte art on a wooden table, for an Instagram post.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "latte"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Something for my cafe's opening day.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "What format would you like for the cafe opening day piece: a still image or a short video? And should it look photographic or illustrated?"
+        },
+        "result": "A realistic photo of a latte with latte art on a wooden table, for an Instagram post.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a freshly made latte with detailed latte art (a rosetta pattern in creamy microfoam) in a white ceramic cup on a warm wooden caf\u00e9 table. Soft natural morning window light from the side, shallow depth of field with a softly blurred cafe interior and a small potted plant in the background, a folded linen napkin and a spoon beside the saucer. Warm, inviting tones, crisp detail on the foam, square composition suitable for an Instagram post celebrating a cafe opening day.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_bff9770b-2ffa-41aa-9fa3-7f76237e2b4e\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:10.160Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_bff9770b-2ffa-41aa-9fa3-7f76237e2b4e"
+        },
+        "result": "{\"job_id\":\"job_bff9770b-2ffa-41aa-9fa3-7f76237e2b4e\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:10.160Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/844359/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_bff9770b-2ffa-41aa-9fa3-7f76237e2b4e",
+          "model": "piclumen-v1",
+          "prompt": "A realistic photograph of a freshly made latte with detailed latte art (a rosetta pattern in creamy microfoam) in a white ceramic cup on a warm wooden caf\u00e9 table. Soft natural morning window light from the side, shallow depth of field with a softly blurred cafe interior and a small potted plant in the background, a folded linen napkin and a spoon beside the saucer. Warm, inviting tones, crisp detail on the foam, square composition suitable for an Instagram post celebrating a cafe opening day.",
+          "note": "Draft 1 of a photorealistic latte-art shot for your cafe's opening-day Instagram post, in 1:1 square format. Approve to generate the final, or tell me what to change (e.g., different cup, props, lighting, or adding text space)."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a freshly made latte with detailed latte art (a rosetta pattern in creamy microfoam) in a white ceramic cup on a warm wooden caf\u00e9 table. Soft natural morning window light from the side, shallow depth of field with a softly blurred cafe interior and a small potted plant in the background, a folded linen napkin and a spoon beside the saucer. Warm, inviting tones, crisp detail on the foam, square composition suitable for an Instagram post celebrating a cafe opening day.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_b9a3eba8-6408-4148-b4c2-6adff5878604\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:15.017Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_b9a3eba8-6408-4148-b4c2-6adff5878604"
+        },
+        "result": "{\"job_id\":\"job_b9a3eba8-6408-4148-b4c2-6adff5878604\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:15.017Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/134157/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/134158/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/134159/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/134160/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Four final square (1:1) photorealistic latte-art images for your opening-day post are ready, generated from the approved draft prompt with PicLumen V1.\nEach image is 1024\u00d71024 JPEG; the job cost 16 credits.\n\n- https://picsum.photos/seed/134157/1024/1024\n- https://picsum.photos/seed/134158/1024/1024\n- https://picsum.photos/seed/134159/1024/1024\n- https://picsum.photos/seed/134160/1024/1024",
+    "cost_usd": 0.0020274200000000003,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3202,
+      "cache_read_input_tokens": 52042,
+      "output_tokens": 1730
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "What format would you like for the cafe opening day piece: a still image or a short video? And should it look photographic or illustrated?",
+      "reply": "A realistic photo of a latte with latte art on a wooden table, for an Instagram post."
+    },
+    {
+      "event": "review",
+      "job_id": "job_bff9770b-2ffa-41aa-9fa3-7f76237e2b4e",
+      "model": "piclumen-v1",
+      "prompt": "A realistic photograph of a freshly made latte with detailed latte art (a rosetta pattern in creamy microfoam) in a white ceramic cup on a warm wooden caf\u00e9 table. Soft natural morning window light from the side, shallow depth of field with a softly blurred cafe interior and a small potted plant in the background, a folded linen napkin and a spoon beside the saucer. Warm, inviting tones, crisp detail on the foam, square composition suitable for an Instagram post celebrating a cafe opening day.",
+      "note": "Draft 1 of a photorealistic latte-art shot for your cafe's opening-day Instagram post, in 1:1 square format. Approve to generate the final, or tell me what to change (e.g., different cup, props, lighting, or adding text space).",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 15.6
+}

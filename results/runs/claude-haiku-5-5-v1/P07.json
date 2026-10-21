@@ -1,0 +1,113 @@
+{
+  "task": {
+    "id": "P07",
+    "category": "photo",
+    "idea": "Realistic interior photo of a small Scandinavian living room with a green sofa.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "living room",
+      "sofa"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Realistic interior photo of a small Scandinavian living room with a green sofa.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image",
+          "response_format": "json"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Realistic interior photograph of a small Scandinavian living room with a green sofa. A compact room with light oak wooden floorboards, a sage-green velvet sofa with plump cushions and a knitted throw, a round white wooden coffee table, a cream wool rug, a simple linen-curtained window letting in soft daylight, a potted fiddle-leaf fig plant, and a minimalist white bookshelf. Clean, uncluttered, calm atmosphere. Eye-level wide-angle composition, natural soft window light with gentle shadows, true-to-life colours, sharp detail, shot on a full-frame camera, architectural interior photography style.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 1,
+          "negative_prompt": "illustration, painting, cartoon, CGI, blurry, distorted furniture, extra limbs, text, watermark, oversaturated"
+        },
+        "result": "{\"job_id\":\"job_f61943d6-1469-4be0-811e-3a55a1f3822d\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:23.869Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_f61943d6-1469-4be0-811e-3a55a1f3822d",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_f61943d6-1469-4be0-811e-3a55a1f3822d\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:23.869Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/873337/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_f61943d6-1469-4be0-811e-3a55a1f3822d",
+          "model": "piclumen-v1",
+          "prompt": "Realistic interior photograph of a small Scandinavian living room with a green sofa. A compact room with light oak wooden floorboards, a sage-green velvet sofa with plump cushions and a knitted throw, a round white wooden coffee table, a cream wool rug, a simple linen-curtained window letting in soft daylight, a potted fiddle-leaf fig plant, and a minimalist white bookshelf. Clean, uncluttered, calm atmosphere. Eye-level wide-angle composition, natural soft window light with gentle shadows, true-to-life colours, sharp detail, shot on a full-frame camera, architectural interior photography style.",
+          "note": "Draft at 4:3 aspect ratio, using the photorealistic PicLumen V1 model. I added supporting details (oak floors, cream rug, round coffee table, window with linen curtains, fig plant, white bookshelf) to flesh out the Scandinavian feel while keeping the green sofa as the focal point. Negative prompt excludes illustration, CGI, and text. Approve to generate the final, or tell me what to change."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Realistic interior photograph of a small Scandinavian living room with a green sofa. A compact room with light oak wooden floorboards, a sage-green velvet sofa with plump cushions and a knitted throw, a round white wooden coffee table, a cream wool rug, a simple linen-curtained window letting in soft daylight, a potted fiddle-leaf fig plant, and a minimalist white bookshelf. Clean, uncluttered, calm atmosphere. Eye-level wide-angle composition, natural soft window light with gentle shadows, true-to-life colours, sharp detail, shot on a full-frame camera, architectural interior photography style.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 4,
+          "negative_prompt": "illustration, painting, cartoon, CGI, blurry, distorted furniture, extra limbs, text, watermark, oversaturated"
+        },
+        "result": "{\"job_id\":\"job_337b1c9a-4b60-4748-897d-f764986624a3\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:31.011Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_337b1c9a-4b60-4748-897d-f764986624a3",
+          "response_format": "json"
+        },
+        "result": "{\"job_id\":\"job_337b1c9a-4b60-4748-897d-f764986624a3\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:31.011Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/728931/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/728932/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/728933/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/728934/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 photorealistic 4:3 images of a small Scandinavian living room with a green sofa, using PicLumen V1 (job `job_337b1c9a-4b60-4748-897d-f764986624a3`, 16 credits).\nAssets:\n- https://picsum.photos/seed/728931/1024/768\n- https://picsum.photos/seed/728932/1024/768\n- https://picsum.photos/seed/728933/1024/768\n- https://picsum.photos/seed/728934/1024/768",
+    "cost_usd": 0.00216677,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3440,
+      "cache_read_input_tokens": 45837,
+      "output_tokens": 2038
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_f61943d6-1469-4be0-811e-3a55a1f3822d",
+      "model": "piclumen-v1",
+      "prompt": "Realistic interior photograph of a small Scandinavian living room with a green sofa. A compact room with light oak wooden floorboards, a sage-green velvet sofa with plump cushions and a knitted throw, a round white wooden coffee table, a cream wool rug, a simple linen-curtained window letting in soft daylight, a potted fiddle-leaf fig plant, and a minimalist white bookshelf. Clean, uncluttered, calm atmosphere. Eye-level wide-angle composition, natural soft window light with gentle shadows, true-to-life colours, sharp detail, shot on a full-frame camera, architectural interior photography style.",
+      "note": "Draft at 4:3 aspect ratio, using the photorealistic PicLumen V1 model. I added supporting details (oak floors, cream rug, round coffee table, window with linen curtains, fig plant, white bookshelf) to flesh out the Scandinavian feel while keeping the green sofa as the focal point. Negative prompt excludes illustration, CGI, and text. Approve to generate the final, or tell me what to change.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.2
+}

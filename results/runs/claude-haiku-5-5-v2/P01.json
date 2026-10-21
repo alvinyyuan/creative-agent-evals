@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "P01",
+    "category": "photo",
+    "idea": "A realistic photo of a red lighthouse on a rocky coast at dawn.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "lighthouse",
+      "dawn"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A realistic photo of a red lighthouse on a rocky coast at dawn.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a red lighthouse standing on a rocky coastline at dawn. The tower is painted bright red with a white lantern room, perched on dark, wet volcanic rocks with waves breaking white against them. Soft pink and orange sunrise light spreads across the horizon, with a pale blue sky fading to deep blue overhead. Calm sea reflecting the early light, faint morning mist over the water. Wide landscape composition with the lighthouse slightly off-center, shot on a full-frame camera with a 24mm lens, natural lighting, crisp detail, true-to-life colors.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_095128e0-feb4-4409-91d7-e9d6936a27ea\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:12.143Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_095128e0-feb4-4409-91d7-e9d6936a27ea"
+        },
+        "result": "{\"job_id\":\"job_095128e0-feb4-4409-91d7-e9d6936a27ea\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:12.143Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/892608/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_095128e0-feb4-4409-91d7-e9d6936a27ea",
+          "model": "piclumen-v1",
+          "prompt": "A realistic photograph of a red lighthouse standing on a rocky coastline at dawn. The tower is painted bright red with a white lantern room, perched on dark, wet volcanic rocks with waves breaking white against them. Soft pink and orange sunrise light spreads across the horizon, with a pale blue sky fading to deep blue overhead. Calm sea reflecting the early light, faint morning mist over the water. Wide landscape composition with the lighthouse slightly off-center, shot on a full-frame camera with a 24mm lens, natural lighting, crisp detail, true-to-life colors.",
+          "note": "Draft 1 of a photorealistic red lighthouse on a rocky coast at dawn (4:3, one image, about 4 credits). Approve to generate the final, or ask for changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic photograph of a red lighthouse standing on a rocky coastline at dawn. The tower is painted bright red with a white lantern room, perched on dark, wet volcanic rocks with waves breaking white against them. Soft pink and orange sunrise light spreads across the horizon, with a pale blue sky fading to deep blue overhead. Calm sea reflecting the early light, faint morning mist over the water. Wide landscape composition with the lighthouse slightly off-center, shot on a full-frame camera with a 24mm lens, natural lighting, crisp detail, true-to-life colors.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_8009dd62-56bc-4ce5-a24d-43df22730f8b\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:19.071Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8009dd62-56bc-4ce5-a24d-43df22730f8b"
+        },
+        "result": "{\"job_id\":\"job_8009dd62-56bc-4ce5-a24d-43df22730f8b\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:19.071Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/915989/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/915990/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/915991/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/915992/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 final images of the red lighthouse at dawn (4:3, using the approved prompt on PicLumen V1).\nJob ID: job_8009dd62-56bc-4ce5-a24d-43df22730f8b, 16 credits charged.\n\n- https://picsum.photos/seed/915989/1024/768\n- https://picsum.photos/seed/915990/1024/768\n- https://picsum.photos/seed/915991/1024/768\n- https://picsum.photos/seed/915992/1024/768",
+    "cost_usd": 0.0020422800000000005,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3728,
+      "cache_read_input_tokens": 45228,
+      "output_tokens": 1686
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_095128e0-feb4-4409-91d7-e9d6936a27ea",
+      "model": "piclumen-v1",
+      "prompt": "A realistic photograph of a red lighthouse standing on a rocky coastline at dawn. The tower is painted bright red with a white lantern room, perched on dark, wet volcanic rocks with waves breaking white against them. Soft pink and orange sunrise light spreads across the horizon, with a pale blue sky fading to deep blue overhead. Calm sea reflecting the early light, faint morning mist over the water. Wide landscape composition with the lighthouse slightly off-center, shot on a full-frame camera with a 24mm lens, natural lighting, crisp detail, true-to-life colors.",
+      "note": "Draft 1 of a photorealistic red lighthouse on a rocky coast at dawn (4:3, one image, about 4 credits). Approve to generate the final, or ask for changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 20.5
+}

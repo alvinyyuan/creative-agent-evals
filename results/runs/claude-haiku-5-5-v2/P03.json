@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "P03",
+    "category": "photo",
+    "idea": "Photograph of an old fisherman mending nets on a pier, documentary style.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "fisherman",
+      "net"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Photograph of an old fisherman mending nets on a pier, documentary style.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Documentary-style photograph of an elderly fisherman mending a fishing net on a weathered wooden pier at early morning. He sits on an upturned wooden crate, weathered hands working a tangle of brown cotton net across his knees, a needle threaded with twine between his fingers. Deep wrinkles, grey stubble, a faded blue wool cap, and a worn oilskin jacket. Coils of net and a few cork floats lie around his feet on the planks. Behind him, moored fishing boats bob in calm harbour water, and soft mist hangs over the sea under a pale sky. Natural available light, soft directional morning sun, candid unposed moment, shallow depth of field, 35mm lens look, true-to-life colour with muted tones, photojournalistic framing with the subject slightly off-centre.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_33705c4e-a9d2-4999-b205-d377ef912b0f\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:12.279Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_33705c4e-a9d2-4999-b205-d377ef912b0f"
+        },
+        "result": "{\"job_id\":\"job_33705c4e-a9d2-4999-b205-d377ef912b0f\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:12.279Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/552950/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_33705c4e-a9d2-4999-b205-d377ef912b0f",
+          "model": "piclumen-v1",
+          "prompt": "Documentary-style photograph of an elderly fisherman mending a fishing net on a weathered wooden pier at early morning. He sits on an upturned wooden crate, weathered hands working a tangle of brown cotton net across his knees, a needle threaded with twine between his fingers. Deep wrinkles, grey stubble, a faded blue wool cap, and a worn oilskin jacket. Coils of net and a few cork floats lie around his feet on the planks. Behind him, moored fishing boats bob in calm harbour water, and soft mist hangs over the sea under a pale sky. Natural available light, soft directional morning sun, candid unposed moment, shallow depth of field, 35mm lens look, true-to-life colour with muted tones, photojournalistic framing with the subject slightly off-centre.",
+          "note": "Draft at 4:3 aspect ratio, using the photorealistic V1 model. I wrote the prompt to match the documentary brief: an elderly fisherman mending net on a pier, candid and natural light. Let me know if you'd like changes, or approve it and I'll generate the final."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Documentary-style photograph of an elderly fisherman mending a fishing net on a weathered wooden pier at early morning. He sits on an upturned wooden crate, weathered hands working a tangle of brown cotton net across his knees, a needle threaded with twine between his fingers. Deep wrinkles, grey stubble, a faded blue wool cap, and a worn oilskin jacket. Coils of net and a few cork floats lie around his feet on the planks. Behind him, moored fishing boats bob in calm harbour water, and soft mist hangs over the sea under a pale sky. Natural available light, soft directional morning sun, candid unposed moment, shallow depth of field, 35mm lens look, true-to-life colour with muted tones, photojournalistic framing with the subject slightly off-centre.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "4:3",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_f5bf5bf9-0d23-4788-b0af-2976b65c2847\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:19.868Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_f5bf5bf9-0d23-4788-b0af-2976b65c2847"
+        },
+        "result": "{\"job_id\":\"job_f5bf5bf9-0d23-4788-b0af-2976b65c2847\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:19.868Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/415513/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/415514/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/415515/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/415516/1024/768\",\"width\":1024,\"height\":768,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Four final images were generated with the approved prompt (PicLumen V1, 4:3).\nThe job is job_f5bf5bf9-0d23-4788-b0af-2976b65c2847 and cost 16 credits.\n\n- https://picsum.photos/seed/415513/1024/768\n- https://picsum.photos/seed/415514/1024/768\n- https://picsum.photos/seed/415515/1024/768\n- https://picsum.photos/seed/415516/1024/768",
+    "cost_usd": 0.0020986600000000005,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3347,
+      "cache_read_input_tokens": 46586,
+      "output_tokens": 1924
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_33705c4e-a9d2-4999-b205-d377ef912b0f",
+      "model": "piclumen-v1",
+      "prompt": "Documentary-style photograph of an elderly fisherman mending a fishing net on a weathered wooden pier at early morning. He sits on an upturned wooden crate, weathered hands working a tangle of brown cotton net across his knees, a needle threaded with twine between his fingers. Deep wrinkles, grey stubble, a faded blue wool cap, and a worn oilskin jacket. Coils of net and a few cork floats lie around his feet on the planks. Behind him, moored fishing boats bob in calm harbour water, and soft mist hangs over the sea under a pale sky. Natural available light, soft directional morning sun, candid unposed moment, shallow depth of field, 35mm lens look, true-to-life colour with muted tones, photojournalistic framing with the subject slightly off-centre.",
+      "note": "Draft at 4:3 aspect ratio, using the photorealistic V1 model. I wrote the prompt to match the documentary brief: an elderly fisherman mending net on a pier, candid and natural light. Let me know if you'd like changes, or approve it and I'll generate the final.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 22.2
+}

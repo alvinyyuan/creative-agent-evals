@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "P06",
+    "category": "photo",
+    "idea": "A lifelike food photo: a bowl of ramen with a soft-boiled egg, steam rising.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "ramen",
+      "egg"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A lifelike food photo: a bowl of ramen with a soft-boiled egg, steam rising.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Lifelike overhead-angle food photograph of a steaming bowl of tonkotsu ramen on a dark wooden table. Rich, creamy pork broth, thin wavy noodles, slices of chashu pork, sliced scallions, a nori sheet, and a halved soft-boiled egg with a jammy, golden-orange yolk. Wisps of steam rising visibly from the hot broth into soft warm light. Shallow depth of field, natural textures on the noodles and egg, realistic condensation and a few chopsticks resting on the bowl's rim. Warm soft window light from the side, photorealistic, high detail, editorial food photography.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_95ea2915-bd39-4655-a3da-55d2fafda7be\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:21.681Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_95ea2915-bd39-4655-a3da-55d2fafda7be"
+        },
+        "result": "{\"job_id\":\"job_95ea2915-bd39-4655-a3da-55d2fafda7be\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:21.681Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/326037/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_95ea2915-bd39-4655-a3da-55d2fafda7be",
+          "model": "piclumen-v1",
+          "prompt": "Lifelike overhead-angle food photograph of a steaming bowl of tonkotsu ramen on a dark wooden table. Rich, creamy pork broth, thin wavy noodles, slices of chashu pork, sliced scallions, a nori sheet, and a halved soft-boiled egg with a jammy, golden-orange yolk. Wisps of steam rising visibly from the hot broth into soft warm light. Shallow depth of field, natural textures on the noodles and egg, realistic condensation and a few chopsticks resting on the bowl's rim. Warm soft window light from the side, photorealistic, high detail, editorial food photography.",
+          "note": "Draft: a 1:1 photorealistic shot of tonkotsu ramen with a halved soft-boiled egg and visible steam. I chose a tonkotsu style and an overhead angle with warm side light. I can change the angle, the bowl style, or the aspect ratio before the final."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Lifelike overhead-angle food photograph of a steaming bowl of tonkotsu ramen on a dark wooden table. Rich, creamy pork broth, thin wavy noodles, slices of chashu pork, sliced scallions, a nori sheet, and a halved soft-boiled egg with a jammy, golden-orange yolk. Wisps of steam rising visibly from the hot broth into soft warm light. Shallow depth of field, natural textures on the noodles and egg, realistic condensation and a few chopsticks resting on the bowl's rim. Warm soft window light from the side, photorealistic, high detail, editorial food photography.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_1eb753d7-6f6d-4515-ad33-5af62636eae8\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:28.448Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_1eb753d7-6f6d-4515-ad33-5af62636eae8"
+        },
+        "result": "{\"job_id\":\"job_1eb753d7-6f6d-4515-ad33-5af62636eae8\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:28.448Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/295399/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/295400/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/295401/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/295402/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your approved final is ready: four photorealistic 1:1 images of tonkotsu ramen with a halved soft-boiled egg and rising steam, made with the PicLumen V1 model.\nEach image is 1024\u00d71024 and cost 16 credits in total.\n\n- https://picsum.photos/seed/295399/1024/1024\n- https://picsum.photos/seed/295400/1024/1024\n- https://picsum.photos/seed/295401/1024/1024\n- https://picsum.photos/seed/295402/1024/1024",
+    "cost_usd": 0.00191186,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3100,
+      "cache_read_input_tokens": 45096,
+      "output_tokens": 1679
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_95ea2915-bd39-4655-a3da-55d2fafda7be",
+      "model": "piclumen-v1",
+      "prompt": "Lifelike overhead-angle food photograph of a steaming bowl of tonkotsu ramen on a dark wooden table. Rich, creamy pork broth, thin wavy noodles, slices of chashu pork, sliced scallions, a nori sheet, and a halved soft-boiled egg with a jammy, golden-orange yolk. Wisps of steam rising visibly from the hot broth into soft warm light. Shallow depth of field, natural textures on the noodles and egg, realistic condensation and a few chopsticks resting on the bowl's rim. Warm soft window light from the side, photorealistic, high detail, editorial food photography.",
+      "note": "Draft: a 1:1 photorealistic shot of tonkotsu ramen with a halved soft-boiled egg and visible steam. I chose a tonkotsu style and an overhead angle with warm side light. I can change the angle, the bowl style, or the aspect ratio before the final.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 16.4
+}

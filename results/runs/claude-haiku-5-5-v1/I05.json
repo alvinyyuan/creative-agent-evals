@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "I05",
+    "category": "illustration",
+    "idea": "Anime key visual of two friends on bikes on a country road in summer.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "bike|bicycle",
+      "summer"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Anime key visual of two friends on bikes on a country road in summer.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime key visual of two friends riding bicycles along a winding country road in summer. Two teenage high-school friends, one with short black hair and a light blue shirt, one with long chestnut hair tied in a ponytail and a white sundress under a yellow cardigan, both laughing and pedaling side by side, slightly turned toward the viewer. Vintage-style bicycles with wicker baskets. Setting: a narrow asphalt road through rolling green fields of wheat and sunflowers, tall oak trees lining the road, distant hills and a pale blue sky with puffy white clouds. Composition: wide cinematic framing, characters in the lower-middle third, road leading into the distance toward the horizon. Lighting: warm golden-hour sunlight with soft lens flares, dappled light through leaves, vibrant saturated colors. Style: polished high-quality anime key visual, clean linework, detailed painted backgrounds, Studio Ghibli-inspired atmosphere, nostalgic summer mood.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_ad97561f-04da-4d83-9b10-0ac17b6faadf\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:59.682Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_ad97561f-04da-4d83-9b10-0ac17b6faadf"
+        },
+        "result": "{\"job_id\":\"job_ad97561f-04da-4d83-9b10-0ac17b6faadf\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:45:59.682Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/538065/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_ad97561f-04da-4d83-9b10-0ac17b6faadf",
+          "model": "piclumen-anime-v1",
+          "prompt": "Anime key visual of two friends riding bicycles along a winding country road in summer. Two teenage high-school friends, one with short black hair and a light blue shirt, one with long chestnut hair tied in a ponytail and a white sundress under a yellow cardigan, both laughing and pedaling side by side, slightly turned toward the viewer. Vintage-style bicycles with wicker baskets. Setting: a narrow asphalt road through rolling green fields of wheat and sunflowers, tall oak trees lining the road, distant hills and a pale blue sky with puffy white clouds. Composition: wide cinematic framing, characters in the lower-middle third, road leading into the distance toward the horizon. Lighting: warm golden-hour sunlight with soft lens flares, dappled light through leaves, vibrant saturated colors. Style: polished high-quality anime key visual, clean linework, detailed painted backgrounds, Studio Ghibli-inspired atmosphere, nostalgic summer mood.",
+          "note": "Draft 1 of the anime key visual, portrait 3:4 (the anime model's default). Two friends, one black-haired in a light blue shirt and one chestnut ponytail in a white sundress and yellow cardigan, pedaling past wheat and sunflower fields under oak trees at golden hour. Tell me what to change, or approve it for the final. Once approved I'll generate the final with the same prompt."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Anime key visual of two friends riding bicycles along a winding country road in summer. Two teenage high-school friends, one with short black hair and a light blue shirt, one with long chestnut hair tied in a ponytail and a white sundress under a yellow cardigan, both laughing and pedaling side by side, slightly turned toward the viewer. Vintage-style bicycles with wicker baskets. Setting: a narrow asphalt road through rolling green fields of wheat and sunflowers, tall oak trees lining the road, distant hills and a pale blue sky with puffy white clouds. Composition: wide cinematic framing, characters in the lower-middle third, road leading into the distance toward the horizon. Lighting: warm golden-hour sunlight with soft lens flares, dappled light through leaves, vibrant saturated colors. Style: polished high-quality anime key visual, clean linework, detailed painted backgrounds, Studio Ghibli-inspired atmosphere, nostalgic summer mood.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_8c134418-72c5-4cf8-ac05-7e5d41dd9241\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:07.133Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_8c134418-72c5-4cf8-ac05-7e5d41dd9241"
+        },
+        "result": "{\"job_id\":\"job_8c134418-72c5-4cf8-ac05-7e5d41dd9241\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:07.133Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/840303/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/840304/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/840305/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/840306/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Generated 4 final anime key visuals (3:4 portrait) of two friends biking down a summer country road, using the approved prompt with the anime model.\n\nAssets:\n- https://picsum.photos/seed/840303/768/1024\n- https://picsum.photos/seed/840304/768/1024\n- https://picsum.photos/seed/840305/768/1024\n- https://picsum.photos/seed/840306/768/1024",
+    "cost_usd": 0.00221225,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3537,
+      "cache_read_input_tokens": 46095,
+      "output_tokens": 2085
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_ad97561f-04da-4d83-9b10-0ac17b6faadf",
+      "model": "piclumen-anime-v1",
+      "prompt": "Anime key visual of two friends riding bicycles along a winding country road in summer. Two teenage high-school friends, one with short black hair and a light blue shirt, one with long chestnut hair tied in a ponytail and a white sundress under a yellow cardigan, both laughing and pedaling side by side, slightly turned toward the viewer. Vintage-style bicycles with wicker baskets. Setting: a narrow asphalt road through rolling green fields of wheat and sunflowers, tall oak trees lining the road, distant hills and a pale blue sky with puffy white clouds. Composition: wide cinematic framing, characters in the lower-middle third, road leading into the distance toward the horizon. Lighting: warm golden-hour sunlight with soft lens flares, dappled light through leaves, vibrant saturated colors. Style: polished high-quality anime key visual, clean linework, detailed painted backgrounds, Studio Ghibli-inspired atmosphere, nostalgic summer mood.",
+      "note": "Draft 1 of the anime key visual, portrait 3:4 (the anime model's default). Two friends, one black-haired in a light blue shirt and one chestnut ponytail in a white sundress and yellow cardigan, pedaling past wheat and sunflower fields under oak trees at golden hour. Tell me what to change, or approve it for the final. Once approved I'll generate the final with the same prompt.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.2
+}

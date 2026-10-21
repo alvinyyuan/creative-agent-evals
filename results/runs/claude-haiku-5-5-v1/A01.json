@@ -1,0 +1,121 @@
+{
+  "task": {
+    "id": "A01",
+    "category": "ambiguous",
+    "idea": "A picture of my cat as a superhero.",
+    "expected_model": "piclumen-anime-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": "Cartoon or anime style please, not realistic.",
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "cat",
+      "superhero"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A picture of my cat as a superhero.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the superhero cat picture be photorealistic, or illustrated (for example comic book, cartoon, or painted)?"
+        },
+        "result": "Cartoon or anime style please, not realistic.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Cartoon anime-style illustration of a cat as a superhero: a heroic cat standing confidently on a rooftop at dusk, wearing a flowing red cape and a small golden emblem on its chest, with a bold mask over its eyes. The cat is in a classic heroic pose, one paw raised, tail curled behind it. Background is a city skyline glowing with orange sunset light, with dynamic speed lines and a few sparkles for energy. Clean cel-shaded lines, vibrant saturated colors, expressive large eyes, dramatic lighting. Not photorealistic.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_f03a8bdc-3e7e-4f0d-87ae-f81dade06192\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:56.988Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_f03a8bdc-3e7e-4f0d-87ae-f81dade06192"
+        },
+        "result": "{\"job_id\":\"job_f03a8bdc-3e7e-4f0d-87ae-f81dade06192\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:46:56.988Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/160394/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_f03a8bdc-3e7e-4f0d-87ae-f81dade06192",
+          "model": "piclumen-anime-v1",
+          "prompt": "Cartoon anime-style illustration of a cat as a superhero: a heroic cat standing confidently on a rooftop at dusk, wearing a flowing red cape and a small golden emblem on its chest, with a bold mask over its eyes. The cat is in a classic heroic pose, one paw raised, tail curled behind it. Background is a city skyline glowing with orange sunset light, with dynamic speed lines and a few sparkles for energy. Clean cel-shaded lines, vibrant saturated colors, expressive large eyes, dramatic lighting. Not photorealistic.",
+          "note": "Draft in anime/cartoon style (not photorealistic) as you asked. I used the anime model with a 3:4 portrait frame. I don't know what your cat looks like, so this is a generic orange-and-white-style cat; tell me its colors or markings and I can adjust. Approve this for the final, or request changes."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Cartoon anime-style illustration of a cat as a superhero: a heroic cat standing confidently on a rooftop at dusk, wearing a flowing red cape and a small golden emblem on its chest, with a bold mask over its eyes. The cat is in a classic heroic pose, one paw raised, tail curled behind it. Background is a city skyline glowing with orange sunset light, with dynamic speed lines and a few sparkles for energy. Clean cel-shaded lines, vibrant saturated colors, expressive large eyes, dramatic lighting. Not photorealistic.",
+          "model": "piclumen-anime-v1",
+          "aspect_ratio": "3:4",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_cc1750ed-621f-4218-9ade-701e264c4abc\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:04.905Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_cc1750ed-621f-4218-9ade-701e264c4abc"
+        },
+        "result": "{\"job_id\":\"job_cc1750ed-621f-4218-9ade-701e264c4abc\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-anime-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:47:04.905Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/354770/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/354771/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/354772/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/354773/768/1024\",\"width\":768,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Your cat superhero is done: four anime-style images in a 3:4 portrait frame, generated from the draft you approved.\n\nAsset URLs:\n1. https://picsum.photos/seed/354770/768/1024\n2. https://picsum.photos/seed/354771/768/1024\n3. https://picsum.photos/seed/354772/768/1024\n4. https://picsum.photos/seed/354773/768/1024",
+    "cost_usd": 0.00208748,
+    "num_turns": 8,
+    "usage": {
+      "input_tokens": 16,
+      "cache_creation_input_tokens": 3298,
+      "cache_read_input_tokens": 52128,
+      "output_tokens": 1810
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the superhero cat picture be photorealistic, or illustrated (for example comic book, cartoon, or painted)?",
+      "reply": "Cartoon or anime style please, not realistic."
+    },
+    {
+      "event": "review",
+      "job_id": "job_f03a8bdc-3e7e-4f0d-87ae-f81dade06192",
+      "model": "piclumen-anime-v1",
+      "prompt": "Cartoon anime-style illustration of a cat as a superhero: a heroic cat standing confidently on a rooftop at dusk, wearing a flowing red cape and a small golden emblem on its chest, with a bold mask over its eyes. The cat is in a classic heroic pose, one paw raised, tail curled behind it. Background is a city skyline glowing with orange sunset light, with dynamic speed lines and a few sparkles for energy. Clean cel-shaded lines, vibrant saturated colors, expressive large eyes, dramatic lighting. Not photorealistic.",
+      "note": "Draft in anime/cartoon style (not photorealistic) as you asked. I used the anime model with a 3:4 portrait frame. I don't know what your cat looks like, so this is a generic orange-and-white-style cat; tell me its colors or markings and I can adjust. Approve this for the final, or request changes.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 23.1
+}

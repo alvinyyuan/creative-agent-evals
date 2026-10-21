@@ -1,0 +1,128 @@
+{
+  "task": {
+    "id": "V05",
+    "category": "video",
+    "idea": "A slow camera push-in video on a steaming cup of coffee on a desk.",
+    "expected_model": "piclumen-video-v1",
+    "expected_kind": "video",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "coffee"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A slow camera push-in video on a steaming cup of coffee on a desk.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "ask_user",
+        "input": {
+          "question": "Should the video look photorealistic (live-action footage style) or illustrated (e.g., animated, painterly, or stylized)?"
+        },
+        "result": "No preference, you decide.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Photorealistic keyframe for a slow camera push-in shot: a white ceramic cup of freshly brewed coffee sits on a wooden desk, thin wisps of steam curling upward into soft morning light. Shallow depth of field, camera framed slightly above and in front of the cup, background softly blurred with a notebook and a sunlit window. Warm natural side lighting, gentle highlights on the steam and coffee surface, cinematic color grading, sharp focus on the cup.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_c2a85fbd-b0fe-460a-b49e-2c15b6466894\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:47.553Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_c2a85fbd-b0fe-460a-b49e-2c15b6466894"
+        },
+        "result": "{\"job_id\":\"job_c2a85fbd-b0fe-460a-b49e-2c15b6466894\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:52:47.553Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/462347/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_c2a85fbd-b0fe-460a-b49e-2c15b6466894",
+          "model": "piclumen-v1",
+          "prompt": "Photorealistic keyframe for a slow camera push-in shot: a white ceramic cup of freshly brewed coffee sits on a wooden desk, thin wisps of steam curling upward into soft morning light. Shallow depth of field, camera framed slightly above and in front of the cup, background softly blurred with a notebook and a sunlit window. Warm natural side lighting, gentle highlights on the steam and coffee surface, cinematic color grading, sharp focus on the cup.",
+          "note": "You didn't specify a style, so I went photorealistic. This is a single still keyframe for the video; the video itself is not generated yet. If you approve, I'll generate the 5-second slow push-in video (16:9) from this idea. Let me know if you'd like changes first."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "video"
+        },
+        "result": "{\"total\":1,\"models\":[{\"id\":\"piclumen-video-v1\",\"name\":\"PicLumen Video V1\",\"kind\":\"video\",\"description\":\"Text-to-video and image-to-video model.\",\"default_aspect_ratio\":\"16:9\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_video",
+        "input": {
+          "prompt": "Photorealistic keyframe for a slow camera push-in shot: a white ceramic cup of freshly brewed coffee sits on a wooden desk, thin wisps of steam curling upward into soft morning light. Shallow depth of field, camera framed slightly above and in front of the cup, background softly blurred with a notebook and a sunlit window. Warm natural side lighting, gentle highlights on the steam and coffee surface, cinematic color grading, sharp focus on the cup.",
+          "model": "piclumen-video-v1",
+          "duration_seconds": 5,
+          "aspect_ratio": "16:9"
+        },
+        "result": "{\"job_id\":\"job_7ac7d4c0-5689-425d-b370-428908c8e8f2\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:00.038Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_7ac7d4c0-5689-425d-b370-428908c8e8f2"
+        },
+        "result": "{\"job_id\":\"job_7ac7d4c0-5689-425d-b370-428908c8e8f2\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-video-v1\",\"kind\":\"video\",\"created_at\":\"2026-10-21T13:53:00.038Z\",\"assets\":[{\"url\":\"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\",\"width\":1024,\"height\":576,\"duration_seconds\":5,\"mime_type\":\"video/mp4\"}],\"credits_charged\":50}",
+        "is_error": false
+      }
+    ],
+    "final_text": "The video is ready: a 5-second, 16:9 photorealistic slow push-in on a steaming coffee cup.\nGenerated with piclumen-video-v1 from the approved prompt.\n\nVideo: https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "cost_usd": 0.0023492499999999998,
+    "num_turns": 9,
+    "usage": {
+      "input_tokens": 18,
+      "cache_creation_input_tokens": 3547,
+      "cache_read_input_tokens": 61705,
+      "output_tokens": 2042
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "ask",
+      "question": "Should the video look photorealistic (live-action footage style) or illustrated (e.g., animated, painterly, or stylized)?",
+      "reply": "No preference, you decide."
+    },
+    {
+      "event": "review",
+      "job_id": "job_c2a85fbd-b0fe-460a-b49e-2c15b6466894",
+      "model": "piclumen-v1",
+      "prompt": "Photorealistic keyframe for a slow camera push-in shot: a white ceramic cup of freshly brewed coffee sits on a wooden desk, thin wisps of steam curling upward into soft morning light. Shallow depth of field, camera framed slightly above and in front of the cup, background softly blurred with a notebook and a sunlit window. Warm natural side lighting, gentle highlights on the steam and coffee surface, cinematic color grading, sharp focus on the cup.",
+      "note": "You didn't specify a style, so I went photorealistic. This is a single still keyframe for the video; the video itself is not generated yet. If you approve, I'll generate the 5-second slow push-in video (16:9) from this idea. Let me know if you'd like changes first.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 25.2
+}

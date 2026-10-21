@@ -1,0 +1,108 @@
+{
+  "task": {
+    "id": "P02",
+    "category": "photo",
+    "idea": "Product shot of a matte black coffee grinder on a marble counter, soft window light, photorealistic.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Looks good, go ahead with the final.",
+        "approve": true
+      }
+    ],
+    "constraints": {},
+    "must_include": [
+      "grinder",
+      "marble"
+    ],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "Product shot of a matte black coffee grinder on a marble counter, soft window light, photorealistic.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Professional product photograph of a matte black coffee grinder sitting on a white and grey veined marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a small dial on the front, shown in sharp focus. Soft natural window light falls from the left, creating gentle highlights on the matte surface and soft shadows on the marble. A few scattered coffee beans sit near the base. Shallow depth of field with a softly blurred neutral background. Clean, uncluttered composition, centered subject, photorealistic, high detail, true-to-life colors, commercial product photography.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_398badbd-37e9-43b6-ae81-e2550f0b35e1\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:10.183Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_398badbd-37e9-43b6-ae81-e2550f0b35e1"
+        },
+        "result": "{\"job_id\":\"job_398badbd-37e9-43b6-ae81-e2550f0b35e1\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:10.183Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/385539/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_398badbd-37e9-43b6-ae81-e2550f0b35e1",
+          "model": "piclumen-v1",
+          "prompt": "Professional product photograph of a matte black coffee grinder sitting on a white and grey veined marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a small dial on the front, shown in sharp focus. Soft natural window light falls from the left, creating gentle highlights on the matte surface and soft shadows on the marble. A few scattered coffee beans sit near the base. Shallow depth of field with a softly blurred neutral background. Clean, uncluttered composition, centered subject, photorealistic, high detail, true-to-life colors, commercial product photography.",
+          "note": "Here's a 1:1 photorealistic draft of the matte black coffee grinder on marble with soft window light. I added a few details to flesh out the scene: a brushed metal hopper lid, a small front dial, scattered coffee beans, and a softly blurred background. Approve this to generate the final, or tell me what to change."
+        },
+        "result": "Looks good, go ahead with the final.",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "Professional product photograph of a matte black coffee grinder sitting on a white and grey veined marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a small dial on the front, shown in sharp focus. Soft natural window light falls from the left, creating gentle highlights on the matte surface and soft shadows on the marble. A few scattered coffee beans sit near the base. Shallow depth of field with a softly blurred neutral background. Clean, uncluttered composition, centered subject, photorealistic, high detail, true-to-life colors, commercial product photography.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "1:1",
+          "count": 4
+        },
+        "result": "{\"job_id\":\"job_ed9532ac-65f7-442f-a3c2-75f328aed784\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:15.983Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_ed9532ac-65f7-442f-a3c2-75f328aed784"
+        },
+        "result": "{\"job_id\":\"job_ed9532ac-65f7-442f-a3c2-75f328aed784\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:51:15.983Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/856381/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/856382/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/856383/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"},{\"url\":\"https://picsum.photos/seed/856384/1024/1024\",\"width\":1024,\"height\":1024,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":16}",
+        "is_error": false
+      }
+    ],
+    "final_text": "Four final images of the matte black grinder on marble are ready (1:1, photorealistic, using the approved prompt).\n\nAsset URLs:\n- https://picsum.photos/seed/856381/1024/1024\n- https://picsum.photos/seed/856382/1024/1024\n- https://picsum.photos/seed/856383/1024/1024\n- https://picsum.photos/seed/856384/1024/1024",
+    "cost_usd": 0.00201819,
+    "num_turns": 7,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 3729,
+      "cache_read_input_tokens": 45349,
+      "output_tokens": 1635
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_398badbd-37e9-43b6-ae81-e2550f0b35e1",
+      "model": "piclumen-v1",
+      "prompt": "Professional product photograph of a matte black coffee grinder sitting on a white and grey veined marble countertop. The grinder has a sleek minimalist design with a brushed metal hopper lid and a small dial on the front, shown in sharp focus. Soft natural window light falls from the left, creating gentle highlights on the matte surface and soft shadows on the marble. A few scattered coffee beans sit near the base. Shallow depth of field with a softly blurred neutral background. Clean, uncluttered composition, centered subject, photorealistic, high detail, true-to-life colors, commercial product photography.",
+      "note": "Here's a 1:1 photorealistic draft of the matte black coffee grinder on marble with soft window light. I added a few details to flesh out the scene: a brushed metal hopper lid, a small front dial, scattered coffee beans, and a softly blurred background. Approve this to generate the final, or tell me what to change.",
+      "reply": "Looks good, go ahead with the final.",
+      "approve": true
+    }
+  ],
+  "seconds": 19.0
+}

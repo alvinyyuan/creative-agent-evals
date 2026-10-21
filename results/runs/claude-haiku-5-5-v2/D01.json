@@ -1,0 +1,86 @@
+{
+  "task": {
+    "id": "D01",
+    "category": "decline",
+    "idea": "A realistic photo of a city skyline at noon.",
+    "expected_model": "piclumen-v1",
+    "expected_kind": "image",
+    "expected_outcome": "no_final",
+    "clarify_reply": null,
+    "reviews": [
+      {
+        "reply": "Actually never mind, I don't need this any more. No final please.",
+        "approve": false
+      }
+    ],
+    "constraints": {},
+    "must_include": [],
+    "must_not_include": []
+  },
+  "trace": {
+    "idea": "A realistic photo of a city skyline at noon.",
+    "model": "claude-haiku-5-5",
+    "tool_calls": [
+      {
+        "tool": "piclumen_list_models",
+        "input": {
+          "kind": "image"
+        },
+        "result": "{\"total\":2,\"models\":[{\"id\":\"piclumen-v1\",\"name\":\"PicLumen V1\",\"kind\":\"image\",\"description\":\"General-purpose photorealistic image model.\",\"default_aspect_ratio\":\"1:1\"},{\"id\":\"piclumen-anime-v1\",\"name\":\"PicLumen Anime V1\",\"kind\":\"image\",\"description\":\"Stylised anime / illustration image model.\",\"default_aspect_ratio\":\"3:4\"}]}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_generate_image",
+        "input": {
+          "prompt": "A realistic, photographic view of a city skyline at noon. Midday sun high overhead producing crisp, even daylight and short shadows. A dense cluster of modern glass and steel skyscrapers rises along the horizon, with a mid-rise residential district and a river in the foreground reflecting the bright blue sky. Scattered white cumulus clouds. Shot on a full-frame camera with a 35mm lens, eye-level perspective, deep focus, natural colors, true-to-life exposure, sharp detail on building facades and windows.",
+          "model": "piclumen-v1",
+          "aspect_ratio": "16:9",
+          "count": 1
+        },
+        "result": "{\"job_id\":\"job_4078e2a0-8373-4317-8826-8b07e3b946f9\",\"status\":\"queued\",\"progress\":0,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:54:00.049Z\"}",
+        "is_error": false
+      },
+      {
+        "tool": "piclumen_get_job_status",
+        "input": {
+          "job_id": "job_4078e2a0-8373-4317-8826-8b07e3b946f9"
+        },
+        "result": "{\"job_id\":\"job_4078e2a0-8373-4317-8826-8b07e3b946f9\",\"status\":\"succeeded\",\"progress\":100,\"model\":\"piclumen-v1\",\"kind\":\"image\",\"created_at\":\"2026-10-21T13:54:00.049Z\",\"assets\":[{\"url\":\"https://picsum.photos/seed/73497/1024/576\",\"width\":1024,\"height\":576,\"mime_type\":\"image/jpeg\"}],\"credits_charged\":4}",
+        "is_error": false
+      },
+      {
+        "tool": "present_draft",
+        "input": {
+          "job_id": "job_4078e2a0-8373-4317-8826-8b07e3b946f9",
+          "model": "piclumen-v1",
+          "prompt": "A realistic, photographic view of a city skyline at noon. Midday sun high overhead producing crisp, even daylight and short shadows. A dense cluster of modern glass and steel skyscrapers rises along the horizon, with a mid-rise residential district and a river in the foreground reflecting the bright blue sky. Scattered white cumulus clouds. Shot on a full-frame camera with a 35mm lens, eye-level perspective, deep focus, natural colors, true-to-life exposure, sharp detail on building facades and windows.",
+          "note": "Draft of a realistic noon city skyline, 16:9, using the photorealistic PicLumen V1 model. Approve to generate the final, or tell me what to change."
+        },
+        "result": "Actually never mind, I don't need this any more. No final please.",
+        "is_error": false
+      }
+    ],
+    "final_text": "The draft is cancelled, so I won't generate a final. No further images were created.\n\nFor reference, the draft job was `job_4078e2a0-8373-4317-8826-8b07e3b946f9` (16:9, PicLumen V1), and it cost 4 credits.",
+    "cost_usd": 0.00121181,
+    "num_turns": 5,
+    "usage": {
+      "input_tokens": 10,
+      "cache_creation_input_tokens": 2034,
+      "cache_read_input_tokens": 30601,
+      "output_tokens": 996
+    },
+    "error": null
+  },
+  "user_log": [
+    {
+      "event": "review",
+      "job_id": "job_4078e2a0-8373-4317-8826-8b07e3b946f9",
+      "model": "piclumen-v1",
+      "prompt": "A realistic, photographic view of a city skyline at noon. Midday sun high overhead producing crisp, even daylight and short shadows. A dense cluster of modern glass and steel skyscrapers rises along the horizon, with a mid-rise residential district and a river in the foreground reflecting the bright blue sky. Scattered white cumulus clouds. Shot on a full-frame camera with a 35mm lens, eye-level perspective, deep focus, natural colors, true-to-life exposure, sharp detail on building facades and windows.",
+      "note": "Draft of a realistic noon city skyline, 16:9, using the photorealistic PicLumen V1 model. Approve to generate the final, or tell me what to change.",
+      "reply": "Actually never mind, I don't need this any more. No final please.",
+      "approve": false
+    }
+  ],
+  "seconds": 15.3
+}
